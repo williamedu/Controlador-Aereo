@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Stop
+  - green
+  - Ground
+  - P1
   layers:
   - Default
   - TransparentFX
