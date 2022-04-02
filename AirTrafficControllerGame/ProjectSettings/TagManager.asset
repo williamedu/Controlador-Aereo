@@ -8,6 +8,17 @@ TagManager:
   - green
   - Ground
   - P1
+  - A3
+  - Turn180
+  - Turn90
+  - Turn270
+  - Turn360
+  - Drb
+  - InmediateTakeOff
+  - HoldShortJ
+  - HoldShortA
+  - HoldShortC
+  - Turn180V
   layers:
   - Default
   - TransparentFX
