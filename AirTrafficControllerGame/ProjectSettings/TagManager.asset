@@ -19,6 +19,7 @@ TagManager:
   - HoldShortA
   - HoldShortC
   - Turn180V
+  - Speed+
   layers:
   - Default
   - TransparentFX

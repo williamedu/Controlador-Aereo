@@ -11,7 +11,10 @@ public class Aeronave : MonoBehaviour
 
 
     public Transform[] TakeOffRunWay117;
-     int TakeOffRunWay17Index = 0;
+     int TakeOffRunWay17AIndex = 0;
+
+    public Transform[] TakeOffRunWay17B;
+    int TakeOffRunWay17BIndex = 0;
 
     public Transform[] R17ViaDeltaJuliet;
      int R17ViaDeltaJulietIndex;
@@ -19,13 +22,17 @@ public class Aeronave : MonoBehaviour
     public Transform[] R17ViaCharlieJulietToBravo;
     int R17ViaCharlieJulietToBravoIndex;
 
+    public Transform[] R17ViaDeltaJulietToBravo;
+    int R17ViaDeltaJulietToBravoIndex;
+
     public Transform[] R35ViaDeltaJulietH;
     int R35ViaDeltaJulietHIndex;
 
     public Transform[] R35ViaDeltaJulietG;
     int R35ViaDeltaJulietGIndex;
 
-    public bool TakeOffRunWay17 = false;
+    public bool TakeOffRunWay17FromA = false;
+    public bool TakeOffRunWay17FromB = false;
     public bool InmediateTakeOff = false;
 
     public int speed = 6;
@@ -52,6 +59,7 @@ public class Aeronave : MonoBehaviour
     public bool taxiRunWay17ViaCJToA = false;
     public bool taxiRunWay17ViaDJToA = false;
     public bool taxiRunWay17ViaCJToB = false;
+    public bool taxiRunWay17ViaDJToB = false;
     public bool taxiRunWay35ViaDJToH = false;
     public bool taxiRunWay35ViaDJToG = false;
     public bool HoldShortOfJuliet = false;
@@ -84,10 +92,13 @@ public class Aeronave : MonoBehaviour
         
 
         //--------------------------take off run way 17-----------------------------------------------------------------------------
-        if (TakeOffRunWay17 == true) { takeOffRunWay17(); }
+        if (TakeOffRunWay17FromA == true) { takeOffRunWay17FromA(); }
+
+        //--------------------------take off run way 17-----------------------------------------------------------------------------
+        if (TakeOffRunWay17FromB == true) { takeOffRunWay17fromB(); }
 
         //---------------INMEDIATE TAKE OFF----------------------------------------------------------------------------------------
-        if (InmediateTakeOff == true && taxiRunWay17ViaCJToA == false && taxiRunWay17ViaDJToA == false) { TakeOffRunWay17 = true; }
+        if (InmediateTakeOff == true && taxiRunWay17ViaCJToA == false && taxiRunWay17ViaDJToA == false) { TakeOffRunWay17FromA = true; }
 
 
         //para parar el proceso de push back de la aeronave------------------------------------------------------------------------------------------------------------------
@@ -105,7 +116,7 @@ public class Aeronave : MonoBehaviour
         if (HoldShortOfCharlie == false && MoveSpeed == 0 && HoldingShortOfCharlie == true) { Invoke("TaxiSpeed", 1); }
         //-------------------------------------------------------------------------------------------------------
 
-        //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET
+        //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO ALFA
 
         if (taxiRunWay17ViaCJToA == true) { MovetoWayPointR17VIACJ(); }
 
@@ -117,11 +128,18 @@ public class Aeronave : MonoBehaviour
 
         //-------------------------------------------------------------------------------------------------------
 
-        //----------------------------PARA IR A LA PISTA 17 VIA DELTA JULIET TO ALFA
+        //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO BRAVO
 
         if (taxiRunWay17ViaCJToB == true) { MovetoWayPointR17VIACJToB(); }
 
         //-------------------------------------------------------------------------------------------------------
+
+        //----------------------------PARA IR A LA PISTA 17 VIA DELTA JULIET TO BRAVO
+
+        if (taxiRunWay17ViaDJToB == true) { MovetoWayPointR17VIADJToB(); }
+
+        //-------------------------------------------------------------------------------------------------------
+
 
         //----------------------------PARA IR A LA PISTA 35 VIA DELTA JULIET TO HOTEL
 
@@ -278,11 +296,11 @@ public class Aeronave : MonoBehaviour
         //------------------------------------------------------------------------------------------------------
 
         //--------------------------------------PARA GIRAR LA AERONAVE EN DISTINTOS EJES----------------------------------------------------------------
-        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true) { rotation180 = true; } }
+        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB== true) { rotation180 = true; } }
 
-        if (other.gameObject.CompareTag("Turn180V")) { if (taxiRunWay17ViaDJToA == true) { Rotation180Variant = true; } if (taxiRunWay35ViaDJToH == true) { Rotation180Variant = true; } if (taxiRunWay35ViaDJToG == true) { Debug.Log("goldd 180 variante co;o"); Rotation180Variant = true; }   }
+        if (other.gameObject.CompareTag("Turn180V")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true) { Rotation180Variant = true; } if (taxiRunWay35ViaDJToH == true) { Rotation180Variant = true; } if (taxiRunWay35ViaDJToG == true) { Debug.Log("goldd 180 variante co;o"); Rotation180Variant = true; }   }
 
-        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true) { Rotation270 = true;  } }
+        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true) { Rotation270 = true;  } }
 
         if (other.gameObject.CompareTag("Turn270")) { Debug.Log("va a girar ahora a 270"); Rotation270 = true; }
         //------------------------------------------------------------------------------------------------------
@@ -303,6 +321,8 @@ public class Aeronave : MonoBehaviour
         if (other.gameObject.CompareTag("HoldShortC")) { if (HoldShortOfCharlie == true) { HoldingShortOfCharlie = true; MoveSpeed = 0; Debug.Log("Holding short of charlie"); } }
         //------------------------------------------------------------------------------------------------------
 
+        //----------------------------------DESACTIVAR GRAVEDAD DE LA AERONAVE--------------------------------------------------------------------
+        if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6; }
     }
 
 
@@ -341,6 +361,16 @@ public class Aeronave : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------
 
+
+    //-------------------TAXI RUN WAY 17 VIA DELTA JULIET TO BRAVO HOLD SHORT OF RUN WAY-----------------------------------------------------------------------------------
+    void MovetoWayPointR17VIADJToB()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, R17ViaDeltaJulietToBravo[R17ViaDeltaJulietToBravoIndex].transform.position, MoveSpeed * Time.deltaTime);
+        if (transform.position == R17ViaDeltaJulietToBravo[R17ViaDeltaJulietToBravoIndex].transform.position) { R17ViaDeltaJulietToBravoIndex += 1; }
+        if (transform.position == R17ViaDeltaJulietToBravo[4].transform.position) { taxiRunWay17ViaDJToB = false; }
+    }
+    //------------------------------------------------------------------------------------------------------
+
     //-------------------TAXI RUN WAY 35  VIA DELTA JULIET TO HOTEL HOLD SHORT OF RUN WAY-----------------------------------------------------------------------------------
     void MovetoWayPointR35VIADJH()
     {
@@ -359,11 +389,21 @@ public class Aeronave : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------
 
-    //--------------------------TAKE OFF RUN WAY 17----------------------------------------------------------------------------
-    void takeOffRunWay17() 
+    //--------------------------TAKE OFF RUN WAY 17 FROM ALFA----------------------------------------------------------------------------
+    void takeOffRunWay17FromA() 
     {
-        transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17Index].transform.position, MoveSpeed * Time.deltaTime);
-        if (transform.position == TakeOffRunWay117[TakeOffRunWay17Index].transform.position) { TakeOffRunWay17Index += 1; }
+        transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
+        if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
+        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; }
+    }
+    //------------------------------------------------------------------------------------------------------
+
+    //--------------------------TAKE OFF RUN WAY 17 FROM BRAVO----------------------------------------------------------------------------
+    void takeOffRunWay17fromB()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position, MoveSpeed * Time.deltaTime);
+        if (transform.position == TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position) { TakeOffRunWay17BIndex += 1; }
+        if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; }
     }
     //------------------------------------------------------------------------------------------------------
     void TaxiSpeed () 
