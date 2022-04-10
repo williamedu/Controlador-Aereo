@@ -20,6 +20,14 @@ TagManager:
   - HoldShortC
   - Turn180V
   - Speed+
+  - HoldShortD
+  - Turn90V
+  - A2
+  - GravityOn
+  - MoveSpeed-
+  - Turn360V
+  - Turn90AP
+  - Turn90APV
   layers:
   - Default
   - TransparentFX
@@ -56,4 +64,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: foreGround
+    uniqueID: 671668491
     locked: 0

@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 660510713}
   m_Layer: 0
   m_Name: Plane02
-  m_TagString: Untagged
+  m_TagString: A2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -417,6 +417,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575a9ff90528b664c85e292498e3269b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PushBackFacingNorthV:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PushBackFacingSouthV:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   R17ViaCharlieJuliet:
   - {fileID: 0}
   - {fileID: 0}
@@ -465,6 +475,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  R17ViaAlfaToAlfa: []
+  R17ViaCharlieJulietC: []
+  R17ViaDeltaJulietC: []
   R35ViaDeltaJulietH:
   - {fileID: 0}
   - {fileID: 0}
@@ -477,14 +490,55 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  R35ViaCharlieJulietH:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  R35ViaCharlieJulietG:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TakeOffRunWay35H:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TakeOffRunWay35G:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   TakeOffRunWay17FromA: 0
   TakeOffRunWay17FromB: 0
   InmediateTakeOff: 0
+  TakeOffRunWay35FromH: 0
+  TakeOffRunWay35FromG: 0
   speed: 10
-  rotation90: 0
   turnSpeed: 10
   PushBackCaraNorte: 0
   PushBackCaraSur: 0
+  PushBackFacingNorthB: 0
+  PushBackFacingSouthB: 0
   rodaje: 0
   stoppush: 0
   MoveSpeed: 5
@@ -492,10 +546,16 @@ MonoBehaviour:
   taxiRunWay17ViaDJToA: 0
   taxiRunWay17ViaCJToB: 0
   taxiRunWay17ViaDJToB: 0
+  taxiRunWay17ViaAToA: 0
+  taxiRunWay17ViaCJToC: 0
+  taxiRunWay17ViaDJToC: 0
   taxiRunWay35ViaDJToH: 0
   taxiRunWay35ViaDJToG: 0
+  taxiRunWay35ViaCJToH: 0
+  taxiRunWay35ViaCJToG: 0
   HoldShortOfJuliet: 0
   HoldShortOfAlfa: 0
+  HoldShortOfDelta: 0
   HoldShortOfCharlie: 0
 --- !u!114 &660510711
 MonoBehaviour:
@@ -1426,8 +1486,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104849071}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 76.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 619403802}
@@ -1436,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 264.7, y: 3.06}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &1104849075

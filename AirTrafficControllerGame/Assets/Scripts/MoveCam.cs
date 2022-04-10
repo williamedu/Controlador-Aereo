@@ -25,10 +25,10 @@ public class MoveCam : MonoBehaviour {
         }
         if (Input.GetMouseButton(0)&& x == false)
         {
-            speed = 2;
-            y = true;
-            float pointer_x = Input.GetAxis("Mouse Y");
-            gameObject.transform.Rotate(-pointer_x * speed, 0, 0);
+           // speed = 2;
+           // y = true;
+           // float pointer_x = Input.GetAxis("Mouse Y");
+           // gameObject.transform.Rotate(-pointer_x * speed, 0, 0);
                        // -pointer_y * 0.5f, 0);
        }
 
