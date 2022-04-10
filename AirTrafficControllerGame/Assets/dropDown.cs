@@ -6,25 +6,69 @@ using TMPro;
 
 public class dropDown : MonoBehaviour
 {
+    public GameObject planeStatus;
+
     public GameObject plane;
     public TMPro.TMP_Dropdown myDrop;
     public TextMeshProUGUI label;
+    public GameObject lightTirilla;
+    public GameObject actionIndicator;
 
-    public string pushBack = "is Pushing Back";
 
+
+
+
+
+    public void Start()
+    {
+    }
     public void planeActions()
     {
         if (myDrop.value == 1) plane.GetComponent<Aeronave>().PushBackFacingNorthB = true;
-        else if (myDrop.value == 2) plane.GetComponent<Aeronave>().PushBackFacingSouthB = true;
-        else if (myDrop.value == 3) plane.GetComponent<planeElements>().coño();
         {
-            label.text = pushBack;
+            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+
+            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+            planeStatus.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+
+        }
+        if (myDrop.value == 2) plane.GetComponent<Aeronave>().PushBackFacingSouthB = true;
+        {
+            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+
         }
 
+        if (myDrop.value == 3) plane.GetComponent<planeElements>().coño();
+        {
+            
+        }
+    }
+
+    
+    public void Update()
+    {
+        //planeIndicators();
 
     }
 
+    /*
+   public void planeIndicators()
+   {
+        if (plane.GetComponent<Aeronave>().PushBackFacingNorthB == false)
+        {
+            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
 
 
+        }
+
+        if (plane.GetComponent<Aeronave>().PushBackFacingSouthB == true)
+        {
+            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+
+
+       }
+    }
+    */
 
 }

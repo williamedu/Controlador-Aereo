@@ -28,6 +28,12 @@ TagManager:
   - Turn360V
   - Turn90AP
   - Turn90APV
+  - Gates
+  - Turn251
+  - Turn34
+  - Turn259
+  - Turn0
+  - HoldShortR
   layers:
   - Default
   - TransparentFX
