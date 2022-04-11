@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class lightsTest : MonoBehaviour
 {
+
+    public GameObject statusPlane;
     public GameObject plane;
     public Image image;
     public bool stop;
@@ -22,6 +25,9 @@ public class lightsTest : MonoBehaviour
         if (plane.GetComponent<Aeronave>().PushBackFacingNorthB == false && plane.GetComponent<Aeronave>().transform.position == plane.GetComponent<Aeronave>().PushBackFacingNorthV[3].transform.position)
         {
             stop = true;
+            statusPlane.GetComponent<Button>().enabled = true;
+            statusPlane.gameObject.GetComponent<planeStatus>().readyToTaxytext();
+
         }
 
          if (plane.GetComponent<Aeronave>().PushBackFacingSouthB == false && plane.GetComponent<Aeronave>().transform.position == plane.GetComponent<Aeronave>().PushBackFacingSouthV[3].transform.position)
