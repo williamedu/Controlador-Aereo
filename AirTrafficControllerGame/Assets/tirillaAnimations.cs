@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class tirillaAnimations : MonoBehaviour
 {
-    public float _cycleLenght;
+    public float _cycleLenght = 0.5f;
     public RectTransform tirilla;
 
     

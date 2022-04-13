@@ -17,25 +17,37 @@ public class dropDown : MonoBehaviour
 
 
 
+    public void Awake()
+    {
+        
 
+    }
 
     public void Start()
     {
+        // necesita estar desactivado al principio, es el boton de taxy
+        planeStatus.SetActive(false);
     }
     public void planeActions()
     {
-        if (myDrop.value == 1) plane.GetComponent<Aeronave>().PushBackFacingNorthB = true;
+        if (myDrop.value == 1) 
         {
+            plane.GetComponent<Aeronave>().PushBackFacingNorthB = true;
             lightTirilla.GetComponentInChildren<lightsTest>().start = true;
-
             lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
             planeStatus.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
 
+
         }
-        if (myDrop.value == 2) plane.GetComponent<Aeronave>().PushBackFacingSouthB = true;
+        if (myDrop.value == 2)
         {
+            plane.GetComponent<Aeronave>().PushBackFacingSouthB = true;
+            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
             lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+            planeStatus.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+
 
         }
 

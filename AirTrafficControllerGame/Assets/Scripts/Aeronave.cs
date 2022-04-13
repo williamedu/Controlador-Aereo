@@ -61,6 +61,10 @@ public class Aeronave : MonoBehaviour
     public Transform[] TakeOffRunWay35G;
     int TakeOffRunWay35GIndex;
 
+    public bool takeOff = false;
+    public bool ATakeOff = false;
+    public  bool BTakeOff = false;
+     bool CTakeOff = false;
     public bool TakeOffRunWay17FromA = false;
     public bool TakeOffRunWay17FromB = false;
     public bool InmediateTakeOff = false;
@@ -137,6 +141,12 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
+        if (takeOff == true && ATakeOff == true) { TakeOffRunWay17FromA = true; }
+        if (takeOff == true && BTakeOff == true) { TakeOffRunWay17FromB = true; }
+        
+       
+
+
         //---------------------------PUSH BACK FACING NORTH V
         if (PushBackFacingNorthB== true) { MovetoWayPointPushBackCaraNorteV(); }
 
@@ -446,6 +456,12 @@ public class Aeronave : MonoBehaviour
 
         //----------------------------------DESACTIVAR GRAVEDAD DE LA AERONAVE--------------------------------------------------------------------
         if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6; }
+
+        //----------------------------------PROCESO DE DESPEGUE--------------------------------------------------------------------
+
+        if (other.gameObject.CompareTag("TakeOffA")) { ATakeOff = true; }
+        if (other.gameObject.CompareTag("TakeOffB")) { BTakeOff = true; }
+        if (other.gameObject.CompareTag("TakeOffC")) { CTakeOff = true; }
     }
 
 
@@ -580,7 +596,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
-        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; }
+        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -589,7 +605,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position) { TakeOffRunWay17BIndex += 1; }
-        if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; }
+        if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; takeOff = false; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -598,7 +614,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay35H[TakeOffRunWay35HIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay35H[TakeOffRunWay35HIndex].transform.position) { TakeOffRunWay35HIndex += 1; }
-        if (transform.position == TakeOffRunWay35H[7].transform.position) { TakeOffRunWay35FromH = false; }
+        if (transform.position == TakeOffRunWay35H[7].transform.position) { TakeOffRunWay35FromH = false; takeOff = false; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -607,7 +623,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay35G[TakeOffRunWay35GIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay35G[TakeOffRunWay35GIndex].transform.position) { TakeOffRunWay35GIndex += 1; }
-        if (transform.position == TakeOffRunWay35G[7].transform.position) { TakeOffRunWay35FromG = false; }
+        if (transform.position == TakeOffRunWay35G[7].transform.position) { TakeOffRunWay35FromG = false; takeOff = false; }
     }
     //------------------------------------------------------------------------------------------------------
 

@@ -7,32 +7,51 @@ using TMPro;
 
 public class lightsTest : MonoBehaviour
 {
-
+    public GameObject takeOff;
     public GameObject statusPlane;
     public GameObject plane;
+    public Aeronave plane1;
     public Image image;
     public bool stop;
     public bool start;
     void Start()
     {
         image = GetComponent<Image>();
-       // StartBlinking();
+        // StartBlinking();
+
+       // plane1 = GetComponent<Aeronave>();
+        plane1 = gameObject.GetComponent<Aeronave>();
+
     }
 
     public void Update()
     {
+
+
+        if (plane.transform.position == plane.GetComponent<Aeronave>().R17ViaCharlieJuliet[7].transform.position || plane.transform.position == plane.GetComponent<Aeronave>().R17ViaDeltaJulietToBravo[4].transform.position)
+        {
+            takeOff.SetActive(true);
+            statusPlane.SetActive(false);
+            stop = true;
+        }
+        
 
         if (plane.GetComponent<Aeronave>().PushBackFacingNorthB == false && plane.GetComponent<Aeronave>().transform.position == plane.GetComponent<Aeronave>().PushBackFacingNorthV[3].transform.position)
         {
             stop = true;
             statusPlane.GetComponent<Button>().enabled = true;
             statusPlane.gameObject.GetComponent<planeStatus>().readyToTaxytext();
+            statusPlane.GetComponent<planeStatus>().normalImage();
 
         }
 
          if (plane.GetComponent<Aeronave>().PushBackFacingSouthB == false && plane.GetComponent<Aeronave>().transform.position == plane.GetComponent<Aeronave>().PushBackFacingSouthV[3].transform.position)
         {
             stop = true;
+            statusPlane.GetComponent<Button>().enabled = true;
+            statusPlane.gameObject.GetComponent<planeStatus>().readyToTaxytext();
+            statusPlane.GetComponent<planeStatus>().normalImage();
+
         }
 
         StartLights();
@@ -93,6 +112,13 @@ public class lightsTest : MonoBehaviour
                 start = false;
             }
         
+    }
+
+    public void takeOffAction()
+    {
+        plane.GetComponent<Aeronave>().takeOff = true;
+        StartLights();
+        start = true;
     }
 
 }
