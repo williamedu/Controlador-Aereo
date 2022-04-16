@@ -403,7 +403,7 @@ public class Approach : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, OutOfRunWaay17ByF[OutOfRunWaay17ByFIndex].transform.position, speed * Time.deltaTime);
             if (transform.position == OutOfRunWaay17ByF[OutOfRunWaay17ByFIndex].transform.position) { OutOfRunWaay17ByFIndex += 1; }
-            if (transform.position == OutOfRunWaay17ByF[1].transform.position) { OutOfRunway17ByF = false; taxing = true; if (gameObject.CompareTag("West") || (gameObject.CompareTag("Visual")) ){ speed = 3; }  }
+            if (transform.position == OutOfRunWaay17ByF[1].transform.position) { OutOfRunway17ByF = false; taxing = true; if (gameObject.CompareTag("West") || (gameObject.CompareTag("Visual")) ){ speed = 2; }  }
         }
     }
     //-------------------------------------------------------------------------------------------------------------------------

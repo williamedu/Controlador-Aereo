@@ -1,15 +1,4 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,17 +9,27 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     [SerializeField] private Canvas canvas;
 
     private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+   
+    private CanvasGroup canvasGroup1;
+    public GameObject parent;
+
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup1 = GetComponent<CanvasGroup>();
     }
+
+    public void Start()
+    {
+        parent = transform.parent.gameObject;
+        canvas = parent.GetComponent<Canvas>();
+    }
+
 
     public void OnBeginDrag(PointerEventData eventData) {
         Debug.Log("OnBeginDrag");
-        canvasGroup.alpha = .6f;
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup1.alpha = .6f;
+        canvasGroup1.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -40,8 +39,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("OnEndDrag");
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
+        canvasGroup1.alpha = 1f;
+        canvasGroup1.blocksRaycasts = true;
     }
 
     public void OnPointerDown(PointerEventData eventData) {

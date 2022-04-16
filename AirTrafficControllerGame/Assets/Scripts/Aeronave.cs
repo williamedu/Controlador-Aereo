@@ -108,12 +108,16 @@ public class Aeronave : MonoBehaviour
     public bool taxiRunWay35ViaDJToG = false;
     public bool taxiRunWay35ViaCJToH = false;
     public bool taxiRunWay35ViaCJToG = false;
+    bool taxing = false;
 
     public bool HoldShortOfJuliet = false;
     private bool HoldingShortOfJuliet = false;
 
     public bool HoldShortOfAlfa = false;
     private bool HoldingShortOfAlfa = false;
+
+    public bool HoldShortOfBravo = false;
+    private bool HoldingShortOfBravo = false;
 
     public bool HoldShortOfDelta = false;
     private bool HoldingShortOfDelta = false;
@@ -122,6 +126,13 @@ public class Aeronave : MonoBehaviour
     private bool HoldingShortOfCharlie = false;
 
     bool Rotation180Variant = false;
+
+    public bool HoldPosition = false;
+
+   public bool isFacingS = false;
+   public bool isFacingN = false;
+
+   public bool ReadyForDeparture = false;
    
 
     // Start is called before the first frame update
@@ -141,8 +152,8 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
-        if (takeOff == true && ATakeOff == true) { TakeOffRunWay17FromA = true; }
-        if (takeOff == true && BTakeOff == true) { TakeOffRunWay17FromB = true; }
+        if (takeOff == true && ATakeOff == true) { TakeOffRunWay17FromA = true; ReadyForDeparture = false; }
+        if (takeOff == true && BTakeOff == true) { TakeOffRunWay17FromB = true; ReadyForDeparture = false; }
         
        
 
@@ -181,6 +192,10 @@ public class Aeronave : MonoBehaviour
          if (HoldShortOfAlfa == false && MoveSpeed == 0 && HoldingShortOfAlfa == true) { Invoke("TaxiSpeed", 1); }
         //-------------------------------------------------------------------------------------------------------
 
+        //--------------------------------Hold Short Bravo-----------------------------------------------------------------------
+        if (HoldShortOfBravo == false && MoveSpeed == 0 && HoldingShortOfBravo == true) { Invoke("TaxiSpeed", 1); }
+        //-------------------------------------------------------------------------------------------------------
+
         //--------------------------------Hold Short Charlie-----------------------------------------------------------------------
         if (HoldShortOfCharlie == false && MoveSpeed == 0 && HoldingShortOfCharlie == true) { Invoke("TaxiSpeed", 1); }
         //-------------------------------------------------------------------------------------------------------
@@ -189,9 +204,18 @@ public class Aeronave : MonoBehaviour
         if (HoldShortOfDelta == false && MoveSpeed == 0 && HoldingShortOfDelta == true) { Invoke("TaxiSpeed", 1); }
         //-------------------------------------------------------------------------------------------------------
 
-        //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO ALFA
+        //--------------------------------HOLD POSITION-----------------------------------------------------------------------
+        if (HoldPosition == true && taxing == true  ) { MoveSpeed = 0; }
 
-        if (taxiRunWay17ViaCJToA == true) { MovetoWayPointR17VIACJ(); }
+        //--------------------------------UNHOLD POSITION-----------------------------------------------------------------------
+        if (HoldPosition == false &&  MoveSpeed == 0 && HoldingShortOfCharlie == false  && HoldingShortOfDelta == false  && HoldingShortOfAlfa == false  && HoldingShortOfJuliet == false ) { Invoke("TaxiSpeed", 1); }
+
+        //--------------------------------TAXING-----------------------------------------------------------------------
+        if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB || taxiRunWay17ViaDJToB == true || taxiRunWay17ViaAToA == true  || taxiRunWay17ViaCJToC == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { taxing = true; }
+
+            //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO ALFA
+
+            if (taxiRunWay17ViaCJToA == true) { MovetoWayPointR17VIACJ(); }
 
         //-------------------------------------------------------------------------------------------------------
 
@@ -446,6 +470,10 @@ public class Aeronave : MonoBehaviour
         if (other.gameObject.CompareTag("HoldShortA")) { if (HoldShortOfAlfa == true) { HoldingShortOfAlfa = true; MoveSpeed = 0; Debug.Log("Holding short of Alfa"); } }
         //------------------------------------------------------------------------------------------------------
 
+        //------------------------------------------Hold short of alfa 2------------------------------------------------------------
+        if (other.gameObject.CompareTag("HoldShortB")) { if (HoldShortOfBravo == true) { HoldingShortOfBravo = true; MoveSpeed = 0; Debug.Log("Holding short of Bravo"); } }
+        //------------------------------------------------------------------------------------------------------
+
         //------------------------------------------Hold short of CHARLIE ------------------------------------------------------------
         if (other.gameObject.CompareTag("HoldShortC")) { if (HoldShortOfCharlie == true) { HoldingShortOfCharlie = true; MoveSpeed = 0; Debug.Log("Holding short of charlie"); } }
         //------------------------------------------------------------------------------------------------------
@@ -468,7 +496,7 @@ public class Aeronave : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //------------------------------PARA DESMARCAR LOS HOLDING SHORT CUANDO SALGA DE EL TRIGGER-----------------------------------------------------------------------
-        Debug.Log("sali de el trigger"); HoldingShortOfJuliet = false; HoldingShortOfAlfa = false; HoldingShortOfCharlie = false; HoldingShortOfDelta = false;
+        Debug.Log("sali de el trigger"); HoldingShortOfJuliet = false; HoldingShortOfAlfa = false; HoldingShortOfCharlie = false; HoldingShortOfDelta = false; HoldingShortOfBravo = false;
         //-----------------------------------------------------------------------------------------------------
     }
 
@@ -477,7 +505,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position) { PushBackFacingNorthVIndex += 1; }
-        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; }
+        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -486,7 +514,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position) { PushBackFacingSouthVIndex += 1; }
-        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; }
+        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -495,7 +523,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaCharlieJuliet[wayPointIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaCharlieJuliet[wayPointIndex].transform.position) { wayPointIndex += 1; }
-        if (transform.position == R17ViaCharlieJuliet[7].transform.position) { taxiRunWay17ViaCJToA = false; }
+        if (transform.position == R17ViaCharlieJuliet[7].transform.position) { taxiRunWay17ViaCJToA = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -504,7 +532,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaDeltaJuliet[R17ViaDeltaJulietIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaDeltaJuliet[R17ViaDeltaJulietIndex].transform.position) { R17ViaDeltaJulietIndex += 1; }
-        if (transform.position == R17ViaCharlieJuliet[7].transform.position) { taxiRunWay17ViaDJToA = false; }
+        if (transform.position == R17ViaCharlieJuliet[7].transform.position) { taxiRunWay17ViaDJToA = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -514,7 +542,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaCharlieJulietToBravo[R17ViaCharlieJulietToBravoIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaCharlieJulietToBravo[R17ViaCharlieJulietToBravoIndex].transform.position) { R17ViaCharlieJulietToBravoIndex += 1; }
-        if (transform.position == R17ViaCharlieJulietToBravo[5].transform.position) { taxiRunWay17ViaCJToB = false; }
+        if (transform.position == R17ViaCharlieJulietToBravo[5].transform.position) { taxiRunWay17ViaCJToB = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -524,7 +552,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaDeltaJulietToBravo[R17ViaDeltaJulietToBravoIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaDeltaJulietToBravo[R17ViaDeltaJulietToBravoIndex].transform.position) { R17ViaDeltaJulietToBravoIndex += 1; }
-        if (transform.position == R17ViaDeltaJulietToBravo[4].transform.position) { taxiRunWay17ViaDJToB = false; }
+        if (transform.position == R17ViaDeltaJulietToBravo[4].transform.position) { taxiRunWay17ViaDJToB = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -533,7 +561,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaAlfaToAlfa[R17ViaAlfaToAlfaIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaAlfaToAlfa[R17ViaAlfaToAlfaIndex].transform.position) { R17ViaAlfaToAlfaIndex += 1; }
-        if (transform.position == R17ViaAlfaToAlfa[3].transform.position) { taxiRunWay17ViaAToA = false; }
+        if (transform.position == R17ViaAlfaToAlfa[3].transform.position) { taxiRunWay17ViaAToA = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -542,7 +570,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaCharlieJulietC[R17ViaCharlieJulietToCIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaCharlieJulietC[R17ViaCharlieJulietToCIndex].transform.position) { R17ViaCharlieJulietToCIndex += 1; }
-        if (transform.position == R17ViaCharlieJulietC[8].transform.position) { taxiRunWay17ViaCJToC = false; }
+        if (transform.position == R17ViaCharlieJulietC[8].transform.position) { taxiRunWay17ViaCJToC = false; ReadyForDeparture = true;  }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -551,7 +579,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R17ViaDeltaJulietC[R17ViaDeltaJulietToCIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaDeltaJulietC[R17ViaDeltaJulietToCIndex].transform.position) { R17ViaDeltaJulietToCIndex += 1; }
-        if (transform.position == R17ViaDeltaJulietC[8].transform.position) { taxiRunWay17ViaDJToC = false; }
+        if (transform.position == R17ViaDeltaJulietC[8].transform.position) { taxiRunWay17ViaDJToC = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -560,7 +588,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R35ViaDeltaJulietH[R35ViaDeltaJulietHIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R35ViaDeltaJulietH[R35ViaDeltaJulietHIndex].transform.position) { R35ViaDeltaJulietHIndex += 1; }
-        if (transform.position == R35ViaDeltaJulietH[4].transform.position) { taxiRunWay35ViaDJToH = false; }
+        if (transform.position == R35ViaDeltaJulietH[4].transform.position) { taxiRunWay35ViaDJToH = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -569,7 +597,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R35ViaDeltaJulietG[R35ViaDeltaJulietGIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R35ViaDeltaJulietG[R35ViaDeltaJulietGIndex].transform.position) { R35ViaDeltaJulietGIndex += 1; }
-        if (transform.position == R35ViaDeltaJulietG[4].transform.position) { taxiRunWay35ViaDJToG = false; }
+        if (transform.position == R35ViaDeltaJulietG[4].transform.position) { taxiRunWay35ViaDJToG = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -578,7 +606,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R35ViaCharlieJulietH[R35ViaCharlieJulietHIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R35ViaCharlieJulietH[R35ViaCharlieJulietHIndex].transform.position) { R35ViaCharlieJulietHIndex += 1; }
-        if (transform.position == R35ViaCharlieJulietH[7].transform.position) { taxiRunWay35ViaCJToH = false; }
+        if (transform.position == R35ViaCharlieJulietH[7].transform.position) { taxiRunWay35ViaCJToH = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -587,7 +615,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, R35ViaCharlieJulietG[R35ViaCharlieJulietGIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R35ViaCharlieJulietG[R35ViaCharlieJulietGIndex].transform.position) { R35ViaCharlieJulietGIndex += 1; }
-        if (transform.position == R35ViaCharlieJulietG[7].transform.position) { taxiRunWay35ViaCJToG = false; }
+        if (transform.position == R35ViaCharlieJulietG[7].transform.position) { taxiRunWay35ViaCJToG = false; ReadyForDeparture = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
