@@ -8,13 +8,14 @@ using UnityEngine.UI;
 public class planeStatus : MonoBehaviour
 {
     public GameObject imageToChange;
-    public Sprite sprite;
-    public Sprite sprite2;
-    public GameObject plane;
     public GameObject taxyOptions;
+    public GameObject plane;
+    public Sprite sprite2;
+    public Sprite sprite;
+
     public TextMeshProUGUI status;
     private Transform parent;
-
+    
     public string readyToTaxy;
     public string facingNorth;
     public string facingSouth;

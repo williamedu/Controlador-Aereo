@@ -321,6 +321,7 @@ public class Approach : MonoBehaviour
 
     }
 
+   
 
 
     private void OnTriggerEnter(Collider other)
@@ -342,9 +343,9 @@ public class Approach : MonoBehaviour
         if (other.gameObject.CompareTag("HoldShortR")) { if (HoldShortOfRamp == true) { speed = 0; } HoldingShortOfRamp = true; }
         if (other.gameObject.CompareTag("Desicion")) { if (No2 == true || No3 == true) { desicion = true; print("la decicion ha sido tomada"); AproachEast = false;  }     else { print("usted es el numero 1"); } if (No2 == true) { print("usted es el numero 2 en secuencia"); } if (No3 == true) { print("usted es el numero 3 en secuencia"); } }
         //if (other.gameObject.CompareTag("Holding2")) { Holding2 = true; }
-       // if (other.gameObject.CompareTag("Holding3")) { Holding3 = true; }
-
-
+        // if (other.gameObject.CompareTag("Holding3")) { Holding3 = true; }
+        //-------------------------------REPARAR CODIGO CORROMPIDO---------------------------------------------------
+        
 
     }
 

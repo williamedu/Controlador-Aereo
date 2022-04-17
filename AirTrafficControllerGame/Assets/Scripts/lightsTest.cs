@@ -7,16 +7,22 @@ using TMPro;
 
 public class lightsTest : MonoBehaviour
 {
+    [Header("gameObjects en LightsText")]
+
     public GameObject holdShortOf;
-    public GameObject takeOff;
     public GameObject TaxyButton;
+    public GameObject takeOff;
     public GameObject plane;
+    
+    [Header("imagenh de la luz Tirilla")]
     public Image image;
+
+    [Header("booleanos")]
     public bool stop;
     public bool start;
-    private Transform parent;
     public bool SHOWt = false;
 
+    private Transform parent;
 
     public void Awake()
     {

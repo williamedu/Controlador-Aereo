@@ -45,6 +45,11 @@ TagManager:
   - TakeOffB
   - TakeOffA
   - HoldShortB
+  - test
+  - Front
+  - Back
+  - Update
+  - 180VV
   layers:
   - Default
   - TransparentFX
@@ -52,7 +57,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FrontAndBack
   - 
   - 
   - 

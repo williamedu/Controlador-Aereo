@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class Aeronave : MonoBehaviour
 {
 
-    
+    public GameObject child;
+
     
 
     public Transform[] PushBackFacingNorthV;
@@ -16,7 +17,7 @@ public class Aeronave : MonoBehaviour
     int PushBackFacingSouthVIndex = 0;
 
     public Transform[] R17ViaCharlieJuliet;
-     int wayPointIndex = 0;
+    [SerializeField] int wayPointIndex = 0;
 
 
     public Transform[] TakeOffRunWay117;
@@ -93,7 +94,7 @@ public class Aeronave : MonoBehaviour
     private Transform P1;
     public bool stoppush = false;
     // public Transform[] wayPoints;
-    [SerializeField] float MoveSpeed;
+    public float MoveSpeed;
 
     float ConstSpeed;
    
@@ -144,7 +145,7 @@ public class Aeronave : MonoBehaviour
 
         ConstSpeed = MoveSpeed;
 
-         
+        child = transform.GetChild(5).gameObject;
 
     }
 
@@ -208,7 +209,7 @@ public class Aeronave : MonoBehaviour
         if (HoldPosition == true && taxing == true  ) { MoveSpeed = 0; }
 
         //--------------------------------UNHOLD POSITION-----------------------------------------------------------------------
-        if (HoldPosition == false &&  MoveSpeed == 0 && HoldingShortOfCharlie == false  && HoldingShortOfDelta == false  && HoldingShortOfAlfa == false  && HoldingShortOfJuliet == false ) { Invoke("TaxiSpeed", 1); }
+        if (HoldPosition == false &&  MoveSpeed == 0 && HoldingShortOfCharlie == false  && HoldingShortOfDelta == false  && HoldingShortOfAlfa == false  && HoldingShortOfJuliet == false && child.GetComponent<FrontAndBack>().colliing == false ) { Invoke("TaxiSpeed", 1); print("here");    }
 
         //--------------------------------TAXING-----------------------------------------------------------------------
         if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB || taxiRunWay17ViaDJToB == true || taxiRunWay17ViaAToA == true  || taxiRunWay17ViaCJToC == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { taxing = true; }
@@ -344,7 +345,7 @@ public class Aeronave : MonoBehaviour
         //-------------------------------------------------------------------------------------------------------
 
         //hace que la aeronave se mueva hacia adelante en su eje Z
-        if (rodaje == true) { speed = 6; transform.Translate(Vector3.forward * speed * Time.deltaTime); }
+        if (rodaje == true) {  transform.Translate(Vector3.forward * speed * Time.deltaTime); }
         //-------------------------------------------------------------------------------------------------------
 
         //----------------------ROTAR 270---------------------------------------------------------------------------------
@@ -434,11 +435,21 @@ public class Aeronave : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground")) { Debug.Log("hola cocho con collider"); }
+        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        speed = 5;
     }
     void OnTriggerEnter(Collider other)
     {
-        //------------------------------------------------------------------------------------------------------
+
+        //-------------------------para detener l;a aeronave si esta esta cerca de otra-----------------------------------------------------------------------------
+        if (gameObject.CompareTag("Front")) { if (other.gameObject.CompareTag("Back")) { speed = 0; print(gameObject.name + "choco con" + other.gameObject.name); } }
+        //---------------------------------------------------------------------------
+
+        //-------------------------para el push back, ya no se usa-----------------------------------------------------------------------------
         if (other.gameObject.CompareTag("Stop"))
         {
             if (PushBackCaraNorte == true) { PushBackRotation90 = true;  }
@@ -448,6 +459,10 @@ public class Aeronave : MonoBehaviour
 
         //--------------------------------------PARA GIRAR LA AERONAVE EN DISTINTOS EJES----------------------------------------------------------------
         if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB== true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } }
+
+        //------------------------------------------VARIANTE PARA BRAVO, GIRAR 180 VV ------------------------------------------------------------
+        if (other.gameObject.CompareTag("180VV")) {if (taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; } }
+        //------------------------------------------------------------------------------------------------------
 
         if (other.gameObject.CompareTag("Turn180V")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH || taxiRunWay35ViaCJToG == true) { Rotation180Variant = true; } }
 
@@ -490,6 +505,10 @@ public class Aeronave : MonoBehaviour
         if (other.gameObject.CompareTag("TakeOffA")) { ATakeOff = true; }
         if (other.gameObject.CompareTag("TakeOffB")) { BTakeOff = true; }
         if (other.gameObject.CompareTag("TakeOffC")) { CTakeOff = true; }
+
+
+        //----------------------------------reparar codigo corrompido--------------------------------------------------------------------
+        //if (other.gameObject.CompareTag("Update")) { if (taxiRunWay17ViaCJToA == true) { if (wayPointIndex == 3) { wayPointIndex = 4; } } }
     }
 
 
@@ -524,6 +543,7 @@ public class Aeronave : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, R17ViaCharlieJuliet[wayPointIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == R17ViaCharlieJuliet[wayPointIndex].transform.position) { wayPointIndex += 1; }
         if (transform.position == R17ViaCharlieJuliet[7].transform.position) { taxiRunWay17ViaCJToA = false; ReadyForDeparture = true; }
+       // if (wayPointIndex == 4) { wayPointIndex = 5; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -658,11 +678,13 @@ public class Aeronave : MonoBehaviour
 
     public void TaxiSpeed () 
     {
-        MoveSpeed = 5;
+       MoveSpeed = 5;
         Debug.Log("se invoko la speed de 5");
         CancelInvoke();
 
     }
+
+   
 
     
     public void PushBackFacingNorth () 

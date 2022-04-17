@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class testparent : MonoBehaviour
 {
-
-     Transform parent;
-    public GameObject parent2;
+    public GameObject child;
+    
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent;
+        child = transform.GetChild(0).GetChild(1).gameObject;
+       
 
-        parent2 = parent.parent.gameObject;
+        
+
     }
 
     // Update is called once per frame

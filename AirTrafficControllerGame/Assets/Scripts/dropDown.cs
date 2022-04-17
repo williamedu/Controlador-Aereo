@@ -6,21 +6,27 @@ using TMPro;
 
 public class dropDown : MonoBehaviour
 {
-    public GameObject planeStatus;
+    [Header("gameObjects en DropDown")]
 
+    public GameObject actionIndicator;
+    public GameObject lightTirilla;
+    public GameObject planeStatus;
     public GameObject plane;
+
+    [Header("textMeshPros")]
+
     public TMPro.TMP_Dropdown myDrop;
     public TextMeshProUGUI label;
-    public GameObject lightTirilla;
-    public GameObject actionIndicator;
-    private Transform parent;
 
+    [Header("Trasnform Automatizado")]
+
+    private Transform parent;
 
     public void Awake()
     {
-       parent = transform.parent.parent.parent;
-       plane = parent.gameObject;
-       // plane = parent.gameObject;
+       parent = transform.parent.parent.parent; // PARA AUTOMATIZAR EL PLANE GAMEOBJECT
+       plane = parent.gameObject;// PARA AUTOMATIZAR EL PLANE GAMEOBJECT
+                                 // plane = parent.gameObject;
     }
     public void Start()
     {
@@ -38,16 +44,20 @@ public class dropDown : MonoBehaviour
     }
     public void planeActions()
     {
+
+        // PARA EL DROPDOWN DEL PUSH BACK FACING NORTH
         if (myDrop.value == 1) 
         {
-            plane.GetComponent<Aeronave>().PushBackFacingNorthB = true;
-            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
-            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
-            planeStatus.gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
+            plane.GetComponent<Aeronave>().PushBackFacingNorthB = true; // ACTIVA BOLEANO PUSHBACK FN AERONAVE
+            lightTirilla.GetComponentInChildren<lightsTest>().start = true; //ACTIVA LUCES EN TIRILLA
+            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();//ACTIVA LUCES EN TIRILLA
+            planeStatus.gameObject.SetActive(true); // ACTIVA EL BOTON DE TAXY 
+            this.gameObject.SetActive(false); //DESACTIVA EL DROPDOWN GAMEB=OBJECT
 
 
         }
+
+        //HACE LO MISMO DE ARRIBA PERO PARA LA OTRA SELECCION DE DROPDOWN
         if (myDrop.value == 2)
         {
             plane.GetComponent<Aeronave>().PushBackFacingSouthB = true;
