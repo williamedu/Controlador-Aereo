@@ -12,7 +12,9 @@ public class TaxyB : MonoBehaviour
     public GameObject taxyOptions;
     public GameObject lightTirilla;
     public GameObject planeMovement;
+    public GameObject holdShortOf;
     public GameObject plane;
+
 
 
     private Transform parent;
@@ -31,6 +33,7 @@ public class TaxyB : MonoBehaviour
     {
         if (myDrop.value == 1)
         {
+            holdShortOf.SetActive(true);
             plane.GetComponent<Aeronave>().isFacingN = false;
             plane.GetComponent<Aeronave>().isFacingS = false;
             lightTirilla.GetComponentInChildren<lightsTest>().start = true;
@@ -49,6 +52,8 @@ public class TaxyB : MonoBehaviour
 
         if (myDrop.value == 2)
         {
+
+            holdShortOf.SetActive(true);
             plane.GetComponent<Aeronave>().isFacingN = false;
             plane.GetComponent<Aeronave>().isFacingS = false;
             lightTirilla.GetComponentInChildren<lightsTest>().start = true;

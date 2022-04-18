@@ -50,6 +50,14 @@ TagManager:
   - Back
   - Update
   - 180VV
+  - A5
+  - A6
+  - B1
+  - B2
+  - B3
+  - B4
+  - A4
+  - A6Push
   layers:
   - Default
   - TransparentFX

@@ -388,12 +388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e85ff39957d99242a59b7b5d45479fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionIndicator: {fileID: 0}
+  lightTirilla: {fileID: 2856751897133143767}
   planeStatus: {fileID: 2856751896474322358}
   plane: {fileID: 0}
   myDrop: {fileID: 2856751895158819320}
   label: {fileID: 0}
-  lightTirilla: {fileID: 2856751897133143767}
-  actionIndicator: {fileID: 0}
 --- !u!1 &2856751895165019505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4727,6 +4727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b6d545f8d03fa4e8c2ff2742c9d521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frame: {fileID: 0}
+  _cycleLenght: 0
 --- !u!1 &2856751896201607512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,13 +5690,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdShortOf: {fileID: 2856751896189928118}
-  takeOff: {fileID: 2856751896367910673}
   TaxyButton: {fileID: 2856751896474322358}
+  takeOff: {fileID: 2856751896367910673}
   plane: {fileID: 0}
+  StopButton: {fileID: 0}
   image: {fileID: 2856751896350261536}
   stop: 0
   start: 0
-  SHOWt: 0
 --- !u!1 &2856751896362844194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5967,6 +5969,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18df14f06db65f4d96c88bfd51c013e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imagueChanger: {fileID: 0}
+  departure: {fileID: 0}
+  status: {fileID: 0}
 --- !u!1 &2856751896401871745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6668,10 +6673,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToChange: {fileID: 2856751896474322358}
-  sprite: {fileID: 21300000, guid: 91f19ed8f73fa654382de0f242a0c3fc, type: 3}
-  sprite2: {fileID: 21300000, guid: c7e7878813281e246852b0a0279a7666, type: 3}
-  plane: {fileID: 0}
   taxyOptions: {fileID: 2856751895728260775}
+  plane: {fileID: 0}
+  sprite2: {fileID: 21300000, guid: c7e7878813281e246852b0a0279a7666, type: 3}
+  sprite: {fileID: 21300000, guid: 91f19ed8f73fa654382de0f242a0c3fc, type: 3}
   status: {fileID: 2856751895538742284}
   readyToTaxy: Ready To Taxy
   facingNorth: PB Facing Noth

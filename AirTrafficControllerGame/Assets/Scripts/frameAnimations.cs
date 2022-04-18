@@ -35,9 +35,9 @@ public class frameAnimations : MonoBehaviour
 
     public void removeOffScreen()
     {
-        frame.DOAnchorPos(new Vector2(496, -11), _cycleLenght);
+        frame.DOAnchorPos(new Vector2(496, -11), _cycleLenght).OnComplete(() => disapear());
         //Invoke("disapear",2);
-        
+
 
     }
 
@@ -48,4 +48,18 @@ public class frameAnimations : MonoBehaviour
 
     }
 
-}
+    public void bounceoutAnim()
+    {
+        frame.DOAnchorPos(Vector3.zero, 0.5f).SetEase(Ease.InBounce).onComplete();
+        {
+            print("maldito dootween");
+            //frame.DOAnchorPos(new Vector2(-216.6773f, -10.83317f), _cycleLenght);
+
+        }
+
+
+    }
+
+    }
+
+

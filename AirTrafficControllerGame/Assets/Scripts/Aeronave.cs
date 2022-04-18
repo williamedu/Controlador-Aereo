@@ -17,7 +17,7 @@ public class Aeronave : MonoBehaviour
     int PushBackFacingSouthVIndex = 0;
 
     public Transform[] R17ViaCharlieJuliet;
-    [SerializeField] int wayPointIndex = 0;
+     int wayPointIndex = 0;
 
 
     public Transform[] TakeOffRunWay117;
@@ -157,7 +157,7 @@ public class Aeronave : MonoBehaviour
         if (takeOff == true && BTakeOff == true) { TakeOffRunWay17FromB = true; ReadyForDeparture = false; }
         
        
-
+        
 
         //---------------------------PUSH BACK FACING NORTH V
         if (PushBackFacingNorthB== true) { MovetoWayPointPushBackCaraNorteV(); }
@@ -452,25 +452,36 @@ public class Aeronave : MonoBehaviour
         //-------------------------para el push back, ya no se usa-----------------------------------------------------------------------------
         if (other.gameObject.CompareTag("Stop"))
         {
-            if (PushBackCaraNorte == true) { PushBackRotation90 = true;  }
+            if (PushBackCaraNorte == true) { PushBackRotation90 = true; }
             if (PushBackCaraSur == true) { PushBackRotation = true; Debug.Log("cara sur"); }
         }
         //------------------------------------------------------------------------------------------------------
 
         //--------------------------------------PARA GIRAR LA AERONAVE EN DISTINTOS EJES----------------------------------------------------------------
-        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB== true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } }
+        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } }
 
         //------------------------------------------VARIANTE PARA BRAVO, GIRAR 180 VV ------------------------------------------------------------
-        if (other.gameObject.CompareTag("180VV")) {if (taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; } }
+        if (other.gameObject.CompareTag("180VV")) { if (taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; } }
         //------------------------------------------------------------------------------------------------------
 
-        if (other.gameObject.CompareTag("Turn180V")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH || taxiRunWay35ViaCJToG == true) { Rotation180Variant = true; } }
+        if (other.gameObject.CompareTag("Turn180V"))
+        {
+            if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH || taxiRunWay35ViaCJToG == true) { Rotation180Variant = true; }
+            if (gameObject.CompareTag("A4")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; print("condicion unica desbloqueada"); } }
+            if (gameObject.CompareTag("A5") && PushBackFacingSouthB == true || gameObject.CompareTag("A5") && PushBackFacingNorthB == true) { rotation180 = true; print("condicion 2 unica dada"); }
+            if (gameObject.CompareTag("A5") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("A5") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
+            
+        }
 
-        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || TakeOffRunWay35FromH == true || TakeOffRunWay35FromG == true ) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { Rotation270 = true; Debug.Log("va a girar 270");  } }
 
-        if (other.gameObject.CompareTag("Turn90V")) { if (PushBackFacingNorthB == true) { rotation90V = true; } if (PushBackFacingSouthB == true) { Rotation270V = true; }  }
+        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || TakeOffRunWay35FromH == true || TakeOffRunWay35FromG == true ) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { Rotation270 = true; Debug.Log("va a girar 270");  }  } 
+
+        if (other.gameObject.CompareTag("Turn90V")) { if (PushBackFacingNorthB == true) { rotation90V = true; } if (PushBackFacingSouthB == true) { Rotation270V = true; } if (gameObject.CompareTag("A4") && PushBackFacingSouthB == true) { rotation90V = true; }  }
 
         if (other.gameObject.CompareTag("Turn270")) { Debug.Log("va a girar ahora a 270"); Rotation270 = true; }
+
+
+        if (other.gameObject.CompareTag("A6Push")) { if (gameObject.CompareTag("A6")) { Rotation180Variant = true; } }
         //------------------------------------------------------------------------------------------------------
 
         //----------------------------------DESACTIVAR GRAVEDAD DE LA AERONAVE--------------------------------------------------------------------
@@ -524,7 +535,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position) { PushBackFacingNorthVIndex += 1; }
-        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; }
+        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; print(transform.rotation.eulerAngles.y); }
     }
     //------------------------------------------------------------------------------------------------------
 

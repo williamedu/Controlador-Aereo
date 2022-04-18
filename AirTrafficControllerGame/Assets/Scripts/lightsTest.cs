@@ -13,16 +13,19 @@ public class lightsTest : MonoBehaviour
     public GameObject TaxyButton;
     public GameObject takeOff;
     public GameObject plane;
-    
+    public GameObject StopButton; // para quitar el boton de stop when ready for departure
+
+
     [Header("imagenh de la luz Tirilla")]
     public Image image;
 
     [Header("booleanos")]
     public bool stop;
     public bool start;
-    public bool SHOWt = false;
 
     private Transform parent;
+    private Transform getChild;
+
 
     public void Awake()
     {
@@ -35,10 +38,13 @@ public class lightsTest : MonoBehaviour
 
     void Start()
     {
+        // referencian al plane automatico
         parent = transform.parent.parent.parent.parent;
         plane = parent.gameObject;
-
-        image = GetComponent<Image>();
+        image = GetComponent<Image>();// para la imagen del stop
+        // estas 2 lineas de codigo referencian el stop button automatico
+        getChild = transform.parent.parent;
+        StopButton = getChild.GetChild(6).gameObject;
 
     }
 
@@ -51,17 +57,18 @@ public class lightsTest : MonoBehaviour
             takeOff.SetActive(true);
             TaxyButton.SetActive(false);
             stop = true;
+            StopButton.SetActive(false);
+            holdShortOf.SetActive(false);
         }
         
 
         if (plane.GetComponent<Aeronave>().PushBackFacingNorthB == false && plane.GetComponent<Aeronave>().isFacingN ==true)
         {
-            print("hola llegue");
             stop = true;
             TaxyButton.GetComponent<Button>().enabled = true;
             TaxyButton.gameObject.GetComponent<planeStatus>().readyToTaxytext();
             TaxyButton.GetComponent<planeStatus>().normalImage();
-            holdShortOf.SetActive(true);
+            
 
         }
 
@@ -71,7 +78,7 @@ public class lightsTest : MonoBehaviour
             TaxyButton.GetComponent<Button>().enabled = true;
             TaxyButton.gameObject.GetComponent<planeStatus>().readyToTaxytext();
             TaxyButton.GetComponent<planeStatus>().normalImage();
-            holdShortOf.SetActive(true);
+           
 
 
         }

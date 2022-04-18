@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  - component: {fileID: 206774604}
   m_Layer: 0
   m_Name: Wheel03
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &206774604
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.809372, y: 3.577558, z: 1.9277592}
-  m_Center: {x: 0.0011978149, y: -2.3600447, z: 0.033584118}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,10 +611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e27287738b825849b7f21e90046304e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callSign: {fileID: 2856751896451665502}
-  AirCraftModel: {fileID: 2856751895773183982}
+  callSign: {fileID: 0}
+  AirCraftModel: {fileID: 0}
   statusPlane: {fileID: 0}
-  dropDown: {fileID: 2856751897189113090}
+  dropDown: {fileID: 0}
   callSingn: BKU776
   modeloDeAeronave: B747
 --- !u!1 &915357216
@@ -833,8 +819,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.314628, y: 0.91, z: 20.85376}
-  m_Center: {x: -0.1929853, y: 0, z: -4.021881}
+  m_Size: {x: 37.70909, y: 0.91, z: 63.3672}
+  m_Center: {x: 1.008709, y: 0, z: 17.234842}
 --- !u!114 &1492366552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,36 +937,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2856751896315805819, guid: 07de742d5c565804cb488ae8b1717708, type: 3}
   m_PrefabInstance: {fileID: 2034029819}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2856751896451665502 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2856751896030354085, guid: 07de742d5c565804cb488ae8b1717708, type: 3}
-  m_PrefabInstance: {fileID: 2034029819}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2856751897189113090 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2856751895158819321, guid: 07de742d5c565804cb488ae8b1717708, type: 3}
-  m_PrefabInstance: {fileID: 2034029819}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e85ff39957d99242a59b7b5d45479fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2856751895773183982 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2856751896726022933, guid: 07de742d5c565804cb488ae8b1717708, type: 3}
-  m_PrefabInstance: {fileID: 2034029819}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
