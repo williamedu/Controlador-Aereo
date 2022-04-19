@@ -40,7 +40,13 @@ public class FrontAndBack : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(gameObject.CompareTag("Front")) {if (other.gameObject.CompareTag("Back")) { parent.GetComponent<Aeronave>().speed = 5; parent.GetComponent<Aeronave>().Invoke("TaxiSpeed", 1); colliing = false; } }
+        if(gameObject.CompareTag("Front")) 
+        {if (other.gameObject.CompareTag("Back")) { parent.GetComponent<Aeronave>().speed = 5; parent.GetComponent<Aeronave>().Invoke("TaxiSpeed", 1); colliing = false; } }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Back")) { if (gameObject.CompareTag("Front")) { parent.GetComponent<Aeronave>().MoveSpeed = 0; print("se mantiene 0 la velocidad"); } }
     }
 
 }

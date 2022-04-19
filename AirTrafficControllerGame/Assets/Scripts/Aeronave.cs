@@ -81,6 +81,7 @@ public class Aeronave : MonoBehaviour
     bool Rotation270 = false;
     bool Rotation270V = false;
     bool rotation180 = false;
+    bool rotation180VVV = false;
     bool rotation90 = false;
     bool rotation90V = false;
     private Transform ps;
@@ -131,6 +132,7 @@ public class Aeronave : MonoBehaviour
     public bool HoldPosition = false;
 
    public bool isFacingS = false;
+    bool FACESOUTH = false;
    public bool isFacingN = false;
 
    public bool ReadyForDeparture = false;
@@ -139,8 +141,8 @@ public class Aeronave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
+        
         RB = GetComponent<Rigidbody>();
 
         ConstSpeed = MoveSpeed;
@@ -386,6 +388,20 @@ public class Aeronave : MonoBehaviour
 
            }
 
+        //------------------ROTAR 180VARIANTE VARIANTE PARA A2-------------------------------------------------------------------------------------
+
+        if (rotation180VVV == true)
+        {
+            transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
+
+            if (transform.rotation.eulerAngles.y <= 180)
+            {
+                Debug.Log("se situo en 180 el heading");
+                rotation180VVV = false;
+            }
+
+        }
+
 
         if (Rotation180Variant == true)
         {
@@ -458,7 +474,11 @@ public class Aeronave : MonoBehaviour
         //------------------------------------------------------------------------------------------------------
 
         //--------------------------------------PARA GIRAR LA AERONAVE EN DISTINTOS EJES----------------------------------------------------------------
-        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } }
+        if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } 
+        if (gameObject.CompareTag("B4")&& taxiRunWay17ViaCJToA == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("B4")&& taxiRunWay17ViaCJToB == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+
+        }
 
         //------------------------------------------VARIANTE PARA BRAVO, GIRAR 180 VV ------------------------------------------------------------
         if (other.gameObject.CompareTag("180VV")) { if (taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; } }
@@ -467,14 +487,29 @@ public class Aeronave : MonoBehaviour
         if (other.gameObject.CompareTag("Turn180V"))
         {
             if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH || taxiRunWay35ViaCJToG == true) { Rotation180Variant = true; }
+            if (gameObject.CompareTag("A2") && PushBackFacingSouthB == true || gameObject.CompareTag("A2") && PushBackFacingNorthB == true) { rotation180VVV = true; print("condicion unica para a2 met"); }
             if (gameObject.CompareTag("A4")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaDJToB == true) { rotation180 = true; print("condicion unica desbloqueada"); } }
             if (gameObject.CompareTag("A5") && PushBackFacingSouthB == true || gameObject.CompareTag("A5") && PushBackFacingNorthB == true) { rotation180 = true; print("condicion 2 unica dada"); }
             if (gameObject.CompareTag("A5") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("A5") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
+            if (gameObject.CompareTag("A6") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("A6") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
             
         }
 
 
-        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || TakeOffRunWay35FromH == true || TakeOffRunWay35FromG == true ) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { Rotation270 = true; Debug.Log("va a girar 270");  }  } 
+        if (other.gameObject.CompareTag("Turn90")) { if (taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || TakeOffRunWay35FromH == true || TakeOffRunWay35FromG == true ) { rotation90 = true; Debug.Log("va a girar ahora a 90"); } if (taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { Rotation270 = true; Debug.Log("va a girar 270");  }
+            //---------------------PUSH BACK CONDITIONS----------------------------------------------------
+            if (gameObject.CompareTag("A2") && PushBackFacingNorthB == true) { rotation90V = true; } 
+            if (gameObject.CompareTag("A2") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("B1") && PushBackFacingNorthB == true) { rotation90V = true; }
+            if (gameObject.CompareTag("B1") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("B2") && PushBackFacingNorthB == true) { rotation90V = true; }
+            if (gameObject.CompareTag("B2") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("B3") && PushBackFacingNorthB == true) { rotation90V = true; }
+            if (gameObject.CompareTag("B3") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("B4") && PushBackFacingNorthB == true) { rotation90V = true; }
+            if (gameObject.CompareTag("B4") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            //-------------------------------------------------------------------------------
+        }
 
         if (other.gameObject.CompareTag("Turn90V")) { if (PushBackFacingNorthB == true) { rotation90V = true; } if (PushBackFacingSouthB == true) { Rotation270V = true; } if (gameObject.CompareTag("A4") && PushBackFacingSouthB == true) { rotation90V = true; }  }
 
@@ -544,7 +579,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position) { PushBackFacingSouthVIndex += 1; }
-        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; }
+        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; FACESOUTH = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -656,6 +691,7 @@ public class Aeronave : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
         if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; }
+        
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -689,6 +725,8 @@ public class Aeronave : MonoBehaviour
 
     public void TaxiSpeed () 
     {
+        if(HoldShortOfAlfa == true || HoldShortOfBravo == true || HoldShortOfJuliet == true || HoldShortOfCharlie == true || HoldShortOfDelta == true) { MoveSpeed = 0; }
+
        MoveSpeed = 5;
         Debug.Log("se invoko la speed de 5");
         CancelInvoke();

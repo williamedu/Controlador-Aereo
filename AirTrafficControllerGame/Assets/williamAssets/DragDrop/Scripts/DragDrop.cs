@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     [SerializeField] private Canvas canvas;
 
     private RectTransform rectTransform;
+    private RectTransform lastPosition;
    
     private CanvasGroup canvasGroup1;
     public GameObject parent;
@@ -34,6 +35,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrag(PointerEventData eventData) {
         //Debug.Log("OnDrag");
+        
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
@@ -46,5 +48,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerDown(PointerEventData eventData) {
         Debug.Log("OnPointerDown");
     }
+
+    
 
 }

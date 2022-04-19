@@ -20,9 +20,21 @@ public class frameAnimations : MonoBehaviour
         //taxyOptionAnimation();
     }
 
+    public void takeOffButtonAnim()
+    {
+        frame.DOAnchorPos(new Vector2(-217.5f, -10.83317f), _cycleLenght);
+
+    }
+
+    public void takeOffRemoveAnim()
+    {
+        frame.DOAnchorPos(new Vector2(277, -10.83317f), _cycleLenght);
+
+    }
+
     public void taxyOptionAnimation()
     {
-        frame.DOAnchorPos(new Vector2(-216.6773f, -10.83317f), _cycleLenght);
+        frame.DOAnchorPos(new Vector2(-216.6773f, -11.4f), _cycleLenght);
 
     }
 
@@ -35,11 +47,17 @@ public class frameAnimations : MonoBehaviour
 
     public void removeOffScreen()
     {
-        frame.DOAnchorPos(new Vector2(496, -11), _cycleLenght).OnComplete(() => disapear());
+        frame.DOAnchorPos(new Vector2(293, -11.4f), _cycleLenght).OnComplete(() => disapear());
         //Invoke("disapear",2);
-
-
     }
+
+    public void removeOffScreenHoldShortOff()
+    {
+        frame.DOAnchorPos(new Vector2(412, 29.6f), _cycleLenght).OnComplete(() => disapear());
+        //Invoke("disapear",2);
+    }
+
+
 
     public void disapear()
     {

@@ -18,6 +18,8 @@ public class TaxyB : MonoBehaviour
 
 
     private Transform parent;
+    private Transform holdShortParent;
+
 
     public TMPro.TMP_Dropdown myDrop;
     public TextMeshProUGUI status;
@@ -26,6 +28,9 @@ public class TaxyB : MonoBehaviour
     {
         parent = transform.parent.parent.parent.parent.parent;
         plane = parent.gameObject;
+
+        holdShortParent = transform.parent.parent.parent;
+        holdShortOf = holdShortParent.GetChild(4).gameObject;
     }
 
     // Update is called once per frame
@@ -42,7 +47,7 @@ public class TaxyB : MonoBehaviour
             planeStatus.gameObject.GetComponent<planeStatus>().taxingToBViaCJText();
             planeStatus.GetComponent<Button>().enabled = false;
             planeStatus.GetComponent<planeStatus>().waitingImage();
-            planeMovement.gameObject.SetActive(true);
+            //planeMovement.gameObject.SetActive(true);
 
 
             //taxyOptions.gameObject.SetActive(false);
@@ -62,7 +67,7 @@ public class TaxyB : MonoBehaviour
             planeStatus.gameObject.GetComponent<planeStatus>().taxingToBViaDJText();
             planeStatus.GetComponent<Button>().enabled = false;
             planeStatus.GetComponent<planeStatus>().waitingImage();
-            planeMovement.gameObject.SetActive(true);
+           // planeMovement.gameObject.SetActive(true);
 
 
             //taxyOptions.gameObject.SetActive(false);
