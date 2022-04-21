@@ -136,7 +136,8 @@ public class Aeronave : MonoBehaviour
    public bool isFacingN = false;
 
    public bool ReadyForDeparture = false;
-   
+    
+    public bool tirillaOffScreen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -477,7 +478,12 @@ public class Aeronave : MonoBehaviour
         if (other.gameObject.CompareTag("Turn180")) { if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB == true || taxiRunWay17ViaDJToB == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { rotation180 = true; } 
         if (gameObject.CompareTag("B4")&& taxiRunWay17ViaCJToA == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
         if (gameObject.CompareTag("B4")&& taxiRunWay17ViaCJToB == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
-
+        if (gameObject.CompareTag("C1") && taxiRunWay17ViaCJToA == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("C1") && taxiRunWay17ViaCJToB == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("C2") && taxiRunWay17ViaCJToA == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("C2") && taxiRunWay17ViaCJToB == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("C3") && taxiRunWay17ViaCJToA == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
+        if (gameObject.CompareTag("C3") && taxiRunWay17ViaCJToB == true && FACESOUTH == true) { Rotation180Variant = true; print("b4 deberia girar"); }
         }
 
         //------------------------------------------VARIANTE PARA BRAVO, GIRAR 180 VV ------------------------------------------------------------
@@ -492,6 +498,7 @@ public class Aeronave : MonoBehaviour
             if (gameObject.CompareTag("A5") && PushBackFacingSouthB == true || gameObject.CompareTag("A5") && PushBackFacingNorthB == true) { rotation180 = true; print("condicion 2 unica dada"); }
             if (gameObject.CompareTag("A5") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("A5") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
             if (gameObject.CompareTag("A6") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("A6") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
+            if (gameObject.CompareTag("GA") && taxiRunWay17ViaDJToA == true || gameObject.CompareTag("GA") && taxiRunWay17ViaDJToB == true) { rotation180 = true; }
             
         }
 
@@ -508,6 +515,14 @@ public class Aeronave : MonoBehaviour
             if (gameObject.CompareTag("B3") && PushBackFacingSouthB == true) { Rotation270V = true; }
             if (gameObject.CompareTag("B4") && PushBackFacingNorthB == true) { rotation90V = true; }
             if (gameObject.CompareTag("B4") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C1") && PushBackFacingNorthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C1") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C2") && PushBackFacingNorthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C2") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C3") && PushBackFacingNorthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("C3") && PushBackFacingSouthB == true) { Rotation270V = true; }
+            if (gameObject.CompareTag("GA") && PushBackFacingNorthB == true) { rotation90V = true; }
+            if (gameObject.CompareTag("GA") && PushBackFacingSouthB == true) { rotation90V = true; }
             //-------------------------------------------------------------------------------
         }
 
@@ -570,7 +585,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position) { PushBackFacingNorthVIndex += 1; }
-        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; print(transform.rotation.eulerAngles.y); }
+        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; FACESOUTH = true; print(transform.rotation.eulerAngles.y); }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -690,7 +705,8 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
-        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; }
+        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; tirillaOffScreen = true;  }
+
         
     }
     //------------------------------------------------------------------------------------------------------
@@ -700,7 +716,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position) { TakeOffRunWay17BIndex += 1; }
-        if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; takeOff = false; }
+        if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; takeOff = false; tirillaOffScreen = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -746,6 +762,12 @@ public class Aeronave : MonoBehaviour
         PushBackCaraSur = true;
 
     }
+
+    public void destruirAeronave()
+    {
+        Destroy(gameObject, 5);
+    }
+        
 
 }
 
