@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class Aeronave : MonoBehaviour
 {
 
-    public GameObject child;
+     GameObject child;
+     GameObject Wheel1;
+     GameObject Wheel2;
+     GameObject Wheel3;
 
     
 
@@ -87,6 +90,9 @@ public class Aeronave : MonoBehaviour
     private Transform ps;
     Vector3 startPos;
     public float turnSpeed = 10;
+     float AnguloDeAtaque = 2;
+    float wheelliftspeed = 15;
+    bool Inclinacion = false;
     public bool PushBackCaraNorte = false;
     public bool PushBackCaraSur = false;
     public bool PushBackFacingNorthB = false;
@@ -142,13 +148,16 @@ public class Aeronave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         
         RB = GetComponent<Rigidbody>();
 
         ConstSpeed = MoveSpeed;
 
         child = transform.GetChild(5).gameObject;
+        Wheel1 = transform.GetChild(0).gameObject;
+        Wheel2 = transform.GetChild(1).gameObject;
+        Wheel3 = transform.GetChild(2).gameObject;
 
     }
 
@@ -156,6 +165,19 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
+       
+        //INCLINAR LA AERONAVE AL DESPEGAR------------------------
+        if (Inclinacion == true)
+        {
+            Wheel3.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Wheel2.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Wheel1.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Invoke("stoplifting", 8);
+
+            transform.Rotate(Vector3.left * AnguloDeAtaque * Time.deltaTime); 
+            if (gameObject.transform.rotation.eulerAngles.x <= 349) { AnguloDeAtaque = 0; } }
+        //----------------------------------------------
+
         if (takeOff == true && ATakeOff == true) { TakeOffRunWay17FromA = true; ReadyForDeparture = false; }
         if (takeOff == true && BTakeOff == true) { TakeOffRunWay17FromB = true; ReadyForDeparture = false; }
         
@@ -706,6 +728,7 @@ public class Aeronave : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
         if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; tirillaOffScreen = true;  }
+        if (transform.position == TakeOffRunWay117[5].transform.position) { Inclinacion = true;  }
 
         
     }
@@ -717,6 +740,7 @@ public class Aeronave : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay17B[TakeOffRunWay17BIndex].transform.position) { TakeOffRunWay17BIndex += 1; }
         if (transform.position == TakeOffRunWay17B[7].transform.position) { TakeOffRunWay17FromB = false; takeOff = false; tirillaOffScreen = true; }
+        if (transform.position == TakeOffRunWay17B[5].transform.position) { Inclinacion= true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -749,7 +773,12 @@ public class Aeronave : MonoBehaviour
 
     }
 
-   
+   void stoplifting()
+    {
+        wheelliftspeed = 0;
+        print("se detuvo la rotacion");
+            
+    }
 
     
     public void PushBackFacingNorth () 
