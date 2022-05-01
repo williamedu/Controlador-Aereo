@@ -5,17 +5,21 @@ using UnityEngine;
 public class onclick : MonoBehaviour
 {
     public Outline craftOutLine;
-
+    public static bool canClick = true;
     private void Start()
     {  
         craftOutLine = GetComponent<Outline>();
     }
     void OnMouseDown()
     {
-        // this object was clicked - do something
-        transform.Find("PlaneUI").gameObject.SetActive(true);     
-        //Debug.Log("se clickeo");
-        //Destroy(this.gameObject);
+        if (canClick == true)
+        {
+            // this object was clicked - do something
+            transform.Find("PlaneUI").gameObject.SetActive(true);
+            GetComponent<Aeronave>().isActive = true;
+            //Debug.Log("se clickeo");
+            //Destroy(this.gameObject);
+        }
     }  
     public void OnMouseOver()
     {
@@ -29,5 +33,14 @@ public class onclick : MonoBehaviour
 
     }
 
+    public void UnableToClick()
+    {
+        canClick = false;
+    }
     
+    public void ableToClick()
+    {
+        canClick = true;
+
+    }
 }

@@ -7,7 +7,28 @@ public class MoveCam : MonoBehaviour {
     public float speed = 2;
     public bool x;
     public bool y;
-    void Update () {
+    public float height = 1f;
+    public float width = 1f;
+    float zoom = 80f;
+    //public Camera cam;
+
+    void Start()
+    {
+        //cam = GetComponent<Camera>();
+    }
+
+    private void Update()
+    {
+        
+        //stretch view//
+       /* cam.ResetProjectionMatrix();
+        var m = cam.projectionMatrix;
+
+        m.m11 *= height;
+        m.m00 *= width;
+        cam.projectionMatrix = m;*/
+
+
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -19,20 +40,20 @@ public class MoveCam : MonoBehaviour {
             x = false;
         }
 
-        if ( x == true && y == true)
+        if (x == true && y == true)
         {
             speed = 0;
         }
-        if (Input.GetMouseButton(0)&& x == false)
+        if (Input.GetMouseButton(0) && x == false)
         {
-           // speed = 2;
-           // y = true;
-           // float pointer_x = Input.GetAxis("Mouse Y");
-           // gameObject.transform.Rotate(-pointer_x * speed, 0, 0);
-                       // -pointer_y * 0.5f, 0);
-       }
+            // speed = 2;
+            // y = true;
+            // float pointer_x = Input.GetAxis("Mouse Y");
+            // gameObject.transform.Rotate(-pointer_x * speed, 0, 0);
+            // -pointer_y * 0.5f, 0);
+        }
 
-        if (Input.GetMouseButton(1)&& y == false)
+        if (Input.GetMouseButton(1) && y == false)
         {
             speed = 2;
             x = true;
@@ -40,12 +61,12 @@ public class MoveCam : MonoBehaviour {
             gameObject.transform.Rotate(0, pointer_y * speed, 0);
             //float pointer_x = Input.GetAxis("Mouse X");
             //transform.Translate(-pointer_x * 0.5f,
-                       // -pointer_y * 0.5f, 0);
+            // -pointer_y * 0.5f, 0);
         }
-        if (Input.GetMouseButton(1)&& Input.GetMouseButton(0))
-            {
+        if (Input.GetMouseButton(1) && Input.GetMouseButton(0))
+        {
             speed = 0;
-            }
+        }
         if (Input.touchCount == 1)
         {
             Touch touchZero = Input.GetTouch(0);
@@ -56,4 +77,11 @@ public class MoveCam : MonoBehaviour {
             }
         }
     }
+
+
+
+    
 }
+    
+        
+

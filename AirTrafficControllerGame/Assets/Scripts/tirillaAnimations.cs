@@ -15,7 +15,7 @@ public class tirillaAnimations : MonoBehaviour
     {
         parent = transform.parent.parent;
         plane = parent.gameObject;
-        tirilla.DOAnchorPos(new Vector2(497.7f, 76.19f), _cycleLenght);
+        tirilla.DOAnchorPos(new Vector2(492, -114), _cycleLenght);
     }
 
     public void Update()
@@ -28,13 +28,13 @@ public class tirillaAnimations : MonoBehaviour
     }
     public void centerTirillaOnScreem()
     {
-        tirilla.DOAnchorPos(new Vector2(361, 77), _cycleLenght);
+        tirilla.DOAnchorPosX(130, _cycleLenght);
 
     }
 
     public void backToSide()
     {
-        tirilla.DOAnchorPos(new Vector2(497.7f, 76.19f), _cycleLenght);
+        tirilla.DOAnchorPosX(496.8594f, _cycleLenght);
 
     }
 

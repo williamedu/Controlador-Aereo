@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Approach : MonoBehaviour
 {
+   public GameObject Wheel1;
+   public GameObject Wheel2;
+   public GameObject Wheel3;
+
     Rigidbody RB;
 
     public Transform[] ApproachRunWay17;
@@ -17,6 +21,9 @@ public class Approach : MonoBehaviour
 
     public Transform[] secuencia3;
     int secuencia3Index = 0;
+
+    public Transform[] GoAround;
+    int GoAroundIndex = 0;
 
     public Transform[] OutOfRunWaay17ByF;
     int OutOfRunWaay17ByFIndex = 0;
@@ -65,6 +72,12 @@ public class Approach : MonoBehaviour
     //public bool OutOfRunway17ByH = false;
 
     //--------BOOL TO ACTIVATE THE WAYPOINTS------
+    public bool ClearToLand = false;
+    public bool Inclinacion = false;
+    float AnguloDeAtaque = 2;
+    float wheelliftspeed = 15;
+    public bool goAround = false; 
+    public bool No1 = false; 
     public bool No2 = false;
     public bool No3 = false;
     public bool Forward = false;
@@ -116,15 +129,37 @@ public class Approach : MonoBehaviour
 
         jet = GameObject.FindGameObjectWithTag("test");
         GM = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-
+        if (gameObject.CompareTag("Final"))
+        {
+            Wheel1 = transform.GetChild(0).gameObject;
+            Wheel2 = transform.GetChild(1).gameObject;
+            Wheel3 = transform.GetChild(5).gameObject;
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (goAround == true && gameObject.CompareTag("Final"))
+        {
+            Wheel3.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Wheel2.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Wheel1.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
+            Invoke("stoplifting", 8);
 
-       
+            transform.Rotate(Vector3.left * AnguloDeAtaque * Time.deltaTime);
+            if (gameObject.transform.rotation.eulerAngles.x <= 349) { AnguloDeAtaque = 0; }
+        }
+
+        if (goAround == true && gameObject.CompareTag("Visual") || goAround == true && gameObject.CompareTag("Visual"))
+        {
+           
+
+            transform.Rotate(Vector3.left * AnguloDeAtaque * Time.deltaTime);
+            if (gameObject.transform.rotation.eulerAngles.x <= 349) { AnguloDeAtaque = 0; }
+        }
+
         //--------------------------------------------------------------------------------------------------
         //----------------LA AERONAVE SE APROXIMA DE ACUERDO A SU UBICACION---------------
         if (Forward == true) { transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime); }
@@ -132,6 +167,9 @@ public class Approach : MonoBehaviour
 
         //----------------cuando la aeronave aterriza se empezara a mover a cierta velocidad hacia adelante
         if (rodaje == true) {  transform.Translate(Vector3.forward * speed * Time.deltaTime); }
+
+        //IDA AL AIRE OR GO AROUND-------------
+        if (goAround == true) { GoAround1(); }
 
         //INICIAR LA APROXIMACION DESDE EL ESTE
         if (AproachEast == true) { ApproachEste(); }
@@ -327,7 +365,7 @@ public class Approach : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //--------------------------------TRIGGERSSS---------------------------------
-
+        if (other.gameObject.CompareTag("GoAround")) {if (ClearToLand == false) { Approach17 = false; goAround = true; } if (gameObject.CompareTag("Visual") || gameObject.CompareTag("West")) { GM.Invoke("secuenciaUpdate", 15);print("secuencia actualizada debio a ida al aire"); } }
         if (other.gameObject.CompareTag("GravityOn")) { RB.useGravity = true; Debug.Log("se activo la gravedad"); }
         if (other.gameObject.CompareTag("MoveSpeed-")) { MoveSpeed = 30; }
         if (other.gameObject.CompareTag("Turn360")) { if (OutOfRunway17ByF == true && transform.position.x > OutOfRunWaay17ByF[1].transform.position.x) { rotation360 = true; speed = 5; } if (taxiTogateA5 == true) { print("deberia girar a la derecha hacia a5"); rotation360 = true; } }    
@@ -345,7 +383,7 @@ public class Approach : MonoBehaviour
         //if (other.gameObject.CompareTag("Holding2")) { Holding2 = true; }
         // if (other.gameObject.CompareTag("Holding3")) { Holding3 = true; }
         //-------------------------------REPARAR CODIGO CORROMPIDO---------------------------------------------------
-        
+        if (other.gameObject.CompareTag("ContinueExit")) { OutOfRunway17ByF = false; taxing = true; }
 
     }
 
@@ -378,6 +416,15 @@ public class Approach : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------------------------------
 
+    //---------------------------------------GO AROUND O IDA AL AIRE----------------------------------------------------------
+    void GoAround1()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, GoAround[GoAroundIndex].transform.position, MoveSpeed * Time.deltaTime);
+        if (transform.position == GoAround[GoAroundIndex].transform.position) { GoAroundIndex += 1; }
+        if (transform.position == GoAround[2].transform.position) { goAround = false;  }
+    }
+    //-------------------------------------------------------------------------------------------------------------------------
+
     //---------------------------------------INICIAR APROXIMACION Final Position 2----------------------------------------------------------
     void Land2()
     {
@@ -404,7 +451,7 @@ public class Approach : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, OutOfRunWaay17ByF[OutOfRunWaay17ByFIndex].transform.position, speed * Time.deltaTime);
             if (transform.position == OutOfRunWaay17ByF[OutOfRunWaay17ByFIndex].transform.position) { OutOfRunWaay17ByFIndex += 1; }
-            if (transform.position == OutOfRunWaay17ByF[1].transform.position) { OutOfRunway17ByF = false; taxing = true; if (gameObject.CompareTag("West") || (gameObject.CompareTag("Visual")) ){ speed = 2; }  }
+            if (transform.position == OutOfRunWaay17ByF[1].transform.position) { taxing = true; OutOfRunway17ByF = false;  if (gameObject.CompareTag("West") || (gameObject.CompareTag("Visual")) ){ speed = 2; }  }
         }
     }
     //-------------------------------------------------------------------------------------------------------------------------
@@ -531,6 +578,13 @@ public class Approach : MonoBehaviour
         if (gameObject.CompareTag("Visual") || (gameObject.CompareTag("West"))) { speed = 3; }
         Debug.Log("se invoko la speed de 5 o 3 dependiendo el caso ");
         CancelInvoke();
+
+    }
+
+    void stoplifting()
+    {
+        wheelliftspeed = 0;
+        print("se detuvo la rotacion");
 
     }
 

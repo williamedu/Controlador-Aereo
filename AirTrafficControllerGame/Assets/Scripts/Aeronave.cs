@@ -116,7 +116,7 @@ public class Aeronave : MonoBehaviour
     public bool taxiRunWay35ViaDJToG = false;
     public bool taxiRunWay35ViaCJToH = false;
     public bool taxiRunWay35ViaCJToG = false;
-    bool taxing = false;
+    public bool taxing = false;
 
     public bool HoldShortOfJuliet = false;
     private bool HoldingShortOfJuliet = false;
@@ -145,6 +145,7 @@ public class Aeronave : MonoBehaviour
     
     public bool tirillaOffScreen = false;
 
+    public  bool isActive; // para referenciar que la tirilla esta active o no
     // Start is called before the first frame update
     void Start()
     {

@@ -62,6 +62,9 @@ TagManager:
   - C2
   - C3
   - GA
+  - Final
+  - ContinueExit
+  - GoAround
   layers:
   - Default
   - TransparentFX
