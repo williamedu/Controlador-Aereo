@@ -49,8 +49,8 @@ public class planeElements : MonoBehaviour
         child2 = transform.GetChild(3).GetChild(0).GetChild(0).GetChild(1).gameObject;
         AirCraftModel = child2.GetComponent<TextMeshProUGUI>();
 
-        child3 = transform.GetChild(3).GetChild(0).GetChild(3).GetChild(0).gameObject;
-        statusPlane = child3.GetComponent<TextMeshProUGUI>();
+        //child3 = transform.GetChild(3).GetChild(0).GetChild(3).GetChild(0).gameObject;
+       // statusPlane = child3.GetComponent<TextMeshProUGUI>();
 
         child4 = transform.GetChild(3).GetChild(0).GetChild(2).gameObject;
         dropDown = child4.GetComponent<dropDown>();
@@ -125,4 +125,12 @@ public class planeElements : MonoBehaviour
     {
         Debug.Log("se esta llamando la funcion");
     }
+    public void Update()
+    {
+        if (statusPlane == null)
+        {
+            return;
+        }
+    }
+
 }

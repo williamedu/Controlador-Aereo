@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour
     public GameObject C2;
     public GameObject C3;
 
+    [Header("tirillas GA ")]
+    public GameObject AV1;
+    public GameObject AV2;
+    public GameObject AV3;
+    public GameObject AV4;
 
 
     public bool TurnTirilla1 = false;
@@ -164,10 +169,26 @@ public class GameManager : MonoBehaviour
             C3.gameObject.SetActive(false);
         }
 
+        // DESACTIVA TIRILLAS DE AV
+        if (AV1.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV1.gameObject.SetActive(false);
+        }
 
+        if (AV2.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV2.gameObject.SetActive(false);
+        }
+        if (AV3.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV3.gameObject.SetActive(false);
+        }
+        if (AV4.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV4.gameObject.SetActive(false);
 
+        }
     }
-
     public void activarTirillasGround()
     
     {
@@ -223,6 +244,26 @@ public class GameManager : MonoBehaviour
         if (C3.GetComponentInParent<Aeronave>().isActive == true)
         {
             C3.gameObject.SetActive(true);
+        }
+
+        // ACTIVAR TIRILLAS DE AV
+        if (AV1.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV1.gameObject.SetActive(true);
+        }
+
+        if (AV2.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV2.gameObject.SetActive(true);
+        }
+        if (AV3.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV3.gameObject.SetActive(true);
+        }
+        if (AV4.GetComponentInParent<Aeronave>().isActive == true)
+        {
+            AV4.gameObject.SetActive(true);
+
         }
     }
 

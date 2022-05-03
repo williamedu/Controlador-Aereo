@@ -9,12 +9,12 @@ public class tarea4 : MonoBehaviour
 
     public string[] InCorrecto = {  "Que mal", "mala suerte", "esa no es la respuesta correcta","Creo que estas reprobado" };
 
-    
+    public string Nombre;
 
 
     private void Start()
     {
-        int aleatorio = Random.Range(1, 9);
+        int aleatorio = Random.Range(1, 10);
 
         print("Multiplica Multiplicador, INICIAMOS!");
 

@@ -728,7 +728,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == TakeOffRunWay117[TakeOffRunWay17AIndex].transform.position) { TakeOffRunWay17AIndex += 1; }
-        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; tirillaOffScreen = true;  }
+        if (transform.position == TakeOffRunWay117[7].transform.position) { TakeOffRunWay17FromA = false; takeOff = false; tirillaOffScreen = true;   }
         if (transform.position == TakeOffRunWay117[5].transform.position) { Inclinacion = true;  }
 
         

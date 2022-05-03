@@ -106,7 +106,7 @@ public class Approach : MonoBehaviour
      bool rotation360 = false;
      bool rotation360V = false;
      bool rotation270 = false;
-     bool rotation270V = false;
+    public bool rotation270V = false;
      bool rotation251A2 = false;
      bool rotationA4 = false;
      bool rotationA6 = false;
