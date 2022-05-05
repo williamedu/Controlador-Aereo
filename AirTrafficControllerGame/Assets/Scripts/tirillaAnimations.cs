@@ -40,7 +40,7 @@ public class tirillaAnimations : MonoBehaviour
 
     public void removeTirillaOfScreem()
     {
-        tirilla.DOAnchorPos(new Vector2(683,-20), _cycleLenght).OnComplete(() => destruirTirilla());
+        tirilla.DOAnchorPos(new Vector2(683, -20), _cycleLenght);
 
     }
 

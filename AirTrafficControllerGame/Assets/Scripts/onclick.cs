@@ -5,7 +5,6 @@ using UnityEngine;
 public class onclick : MonoBehaviour
 {
     public float ActivacionAeronave = 10000;
-
     public static bool canClick = true;
     public bool activar;
     public Outline craftOutLine;
@@ -32,6 +31,9 @@ public class onclick : MonoBehaviour
             GetComponent<Aeronave>().isActive = true;
             craftOutLine.enabled = false;
             activar = false;
+            this.gameObject.GetComponent<Waypoint_Indicator>().enableGameObject = false;
+            this.gameObject.GetComponent<Waypoint_Indicator>().enableText = true;
+            this.gameObject.GetComponent<Waypoint_Indicator>().enableSprite = true;
 
             //desechable
             //activar = false; se desactivo ahora
@@ -54,6 +56,8 @@ public class onclick : MonoBehaviour
     public void ActivarAeronave()
     {
         activar = true;
+        this.gameObject.GetComponent<Waypoint_Indicator>().enableGameObject = true;
+
     }
     public void UnableToClick()
     {

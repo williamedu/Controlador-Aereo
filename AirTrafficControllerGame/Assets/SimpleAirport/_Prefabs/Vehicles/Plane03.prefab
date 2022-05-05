@@ -226,7 +226,7 @@ Transform:
   - {fileID: 400004}
   - {fileID: 400002}
   - {fileID: 2117386575}
-  - {fileID: 2113667838006346545}
+  - {fileID: 8167509474138167800}
   - {fileID: 8296095829788255783}
   - {fileID: 2013623473}
   m_Father: {fileID: 0}
@@ -437,6 +437,7 @@ MonoBehaviour:
   No1: 0
   No2: 0
   No3: 0
+  Onsight: 0
   Forward: 0
   AproachEast: 1
   TaxiToGateGeneralAviation: 1
@@ -454,6 +455,7 @@ MonoBehaviour:
   taxing: 0
   speed: 0
   MoveSpeed: 80
+  rotation270V: 0
   Holding2: 0
   Holding3: 0
   GM: {fileID: 0}
@@ -726,7 +728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   colliing: 0
---- !u!1001 &4139938052767125925
+--- !u!1001 &6159112970923363180
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -823,8 +825,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3436aa7defb7ef459969405a6531698, type: 3}
---- !u!224 &2113667838006346545 stripped
+--- !u!224 &8167509474138167800 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2603434673313403540, guid: c3436aa7defb7ef459969405a6531698, type: 3}
-  m_PrefabInstance: {fileID: 4139938052767125925}
+  m_PrefabInstance: {fileID: 6159112970923363180}
   m_PrefabAsset: {fileID: 0}

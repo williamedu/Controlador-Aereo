@@ -24,6 +24,16 @@ public class stop : MonoBehaviour
         plane.GetComponent<Aeronave>().HoldPosition = true;
     }
 
+    public void stopPlaneaAir()
+    {
+        plane.GetComponent<Approach>().HoldPosition = true;
+    }
+
+    public void continueMovingAir()
+    {
+        plane.GetComponent<Approach>().HoldPosition = false;
+
+    }
     public void continueMoving()
     {
         plane.GetComponent<Aeronave>().HoldPosition = false;

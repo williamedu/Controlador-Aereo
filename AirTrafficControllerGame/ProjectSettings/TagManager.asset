@@ -66,6 +66,9 @@ TagManager:
   - ContinueExit
   - GoAround
   - PushBackCarsDestroyer
+  - Onsight
+  - Canvas
+  - RFP
   layers:
   - Default
   - TransparentFX

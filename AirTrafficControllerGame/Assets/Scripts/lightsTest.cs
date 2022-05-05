@@ -117,8 +117,6 @@ public class lightsTest : MonoBehaviour
     {
         StopAllCoroutines();
 
-
-
     }
 
     public void Stop()

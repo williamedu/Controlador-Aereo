@@ -65,6 +65,7 @@ public class Approach : MonoBehaviour
     public Transform[] TaxiToGateB4;
     int TaxiToGateB4Index = 0;
 
+    public bool tirillaOffScreen = false;     // para animaciones de tirilla 
 
     public bool Approach17 = false;
     public bool rodaje = false;
@@ -80,6 +81,7 @@ public class Approach : MonoBehaviour
     public bool No1 = false; 
     public bool No2 = false;
     public bool No3 = false;
+    public bool Onsight = false;
     public bool Forward = false;
     public bool AproachEast = false;
     public bool TaxiToGateGeneralAviation = false;
@@ -98,6 +100,7 @@ public class Approach : MonoBehaviour
     public bool HoldShortOfRamp = false;
      bool HoldingShortOfRamp = false;
    public bool taxing = false;
+    public bool HoldPosition = false;
     //--------SPPEDS-------------
     public int speed;
     public int MoveSpeed = 40;
@@ -131,9 +134,9 @@ public class Approach : MonoBehaviour
         GM = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         if (gameObject.CompareTag("Final"))
         {
-            Wheel1 = transform.GetChild(0).gameObject;
-            Wheel2 = transform.GetChild(1).gameObject;
-            Wheel3 = transform.GetChild(5).gameObject;
+            Wheel1 = transform.GetChild(6).gameObject;
+            Wheel2 = transform.GetChild(7).gameObject;
+            Wheel3 = transform.GetChild(8).gameObject;
         }
         
     }
@@ -141,6 +144,10 @@ public class Approach : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HoldPosition == true) { speed = 0;   }
+        if (HoldPosition == false && taxing == true && speed ==0) { Invoke("TaxiSpeed", 1);    }
+
+
         if (goAround == true && gameObject.CompareTag("Final"))
         {
             Wheel3.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
@@ -169,7 +176,7 @@ public class Approach : MonoBehaviour
         if (rodaje == true) {  transform.Translate(Vector3.forward * speed * Time.deltaTime); }
 
         //IDA AL AIRE OR GO AROUND-------------
-        if (goAround == true) { GoAround1(); }
+        if (goAround == true) { Approach17 = false; GoAround1(); }
 
         //INICIAR LA APROXIMACION DESDE EL ESTE
         if (AproachEast == true) { ApproachEste(); }
@@ -384,6 +391,7 @@ public class Approach : MonoBehaviour
         // if (other.gameObject.CompareTag("Holding3")) { Holding3 = true; }
         //-------------------------------REPARAR CODIGO CORROMPIDO---------------------------------------------------
         if (other.gameObject.CompareTag("ContinueExit")) { OutOfRunway17ByF = false; taxing = true; }
+        if (other.gameObject.CompareTag("Onsight")) { Onsight = true; print(gameObject.name + "is on sight"); }
 
     }
 

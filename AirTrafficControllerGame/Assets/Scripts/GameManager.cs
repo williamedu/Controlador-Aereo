@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int tirillaCounterAzul = 0;
     public float _cycleLenght = 0.3f;
 
-
+    public bool airActive;
 
     [Header("Port Tirillas Amarillas ")]
     public GameObject port1;
@@ -68,11 +68,22 @@ public class GameManager : MonoBehaviour
     public GameObject AV3;
     public GameObject AV4;
 
+    [Header("tirillas AIRE ")]
+    public GameObject AIR1;
+    public GameObject AIR2;
+    
+
 
     public bool TurnTirilla1 = false;
     // Start is called before the first frame update
+
+    public void Awake()
+    {
+
+    }
     void Start()
     {
+        airActive = false;
         _cycleLenght = 0.3f;
         port1 = GameObject.Find("tirilla1");
         port2 = GameObject.Find("tirilla2");
@@ -82,9 +93,6 @@ public class GameManager : MonoBehaviour
         port6 = GameObject.Find("tirilla6");
 
         //port1FinalPosition = new Vector3(port1.transform.position.x + 160, port1.transform.position.y, port1.transform.position.z);
-
-       
-
         
     }
 
@@ -92,10 +100,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-     if (SecuenciaDeAterrizaje == 4) { SecuenciaDeAterrizaje = 1; }
+        //DESACTIVAR TIRILLAS DE AIRE
 
+        if (airActive == false)
+        {
+            AIR1.gameObject.SetActive(false);
+            AIR2.gameObject.SetActive(false);
+        }
 
-     
+        if (airActive == true)
+        {
+            AIR1.gameObject.SetActive(true);
+            AIR2.gameObject.SetActive(true);
+        }
+
+        if (SecuenciaDeAterrizaje == 4) { SecuenciaDeAterrizaje = 1; }
+   
      if (tirillaCounterAmarilla == 1) { T1.DOAnchorPosX(480, _cycleLenght); }
      if (tirillaCounterAmarilla == 2) { T2.DOAnchorPosX(480, _cycleLenght); }
      if (tirillaCounterAmarilla == 3) { T3.DOAnchorPosX(480, _cycleLenght); }
@@ -188,6 +208,8 @@ public class GameManager : MonoBehaviour
             AV4.gameObject.SetActive(false);
 
         }
+
+        
     }
     public void activarTirillasGround()
     
@@ -285,6 +307,16 @@ public class GameManager : MonoBehaviour
         port4.gameObject.SetActive(true);
         port5.gameObject.SetActive(true);
         port6.gameObject.SetActive(true);
+    }
+
+    public void airTrue()
+    {
+        airActive = true;
+    }
+
+    public void airFalse()
+    {
+        airActive = false;
     }
 
 
