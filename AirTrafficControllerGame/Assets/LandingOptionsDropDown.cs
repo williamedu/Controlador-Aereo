@@ -16,13 +16,23 @@ public class LandingOptionsDropDown : MonoBehaviour
     public GameObject imageToChange;
     public GameObject plane;
     public GameObject lightsAir;
+    public GameObject stopPlaneButton; // para activar el stop button cuando salga de pista
+    public bool activarButtonBool;
 
 
     public void Start()
     {
+        activarButtonBool = true;
         lightsAir.GetComponent<lightsAir>().stop = true;
     }
 
+    public void Update()
+    {
+        if (plane.GetComponent<Approach>().taxing == true && activarButtonBool == true) 
+        {
+            activarStopButton();
+        }
+    }
 
     public void statusChange()
     {
@@ -45,6 +55,13 @@ public class LandingOptionsDropDown : MonoBehaviour
     public void waitingImage()
     {
         imageToChange.GetComponent<Image>().sprite = bottonAmarillo;
+
+    }
+
+    public void activarStopButton()
+    {
+        stopPlaneButton.SetActive(true);
+        activarButtonBool = false;
 
     }
 

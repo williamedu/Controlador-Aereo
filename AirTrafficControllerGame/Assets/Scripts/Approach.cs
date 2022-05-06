@@ -144,7 +144,7 @@ public class Approach : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HoldPosition == true) { speed = 0;   }
+        if (HoldPosition == true && taxing == true) { speed = 0;   }
         if (HoldPosition == false && taxing == true && speed ==0) { Invoke("TaxiSpeed", 1);    }
 
 
