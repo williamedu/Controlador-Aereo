@@ -10,6 +10,9 @@ public class Aeronave : MonoBehaviour
      GameObject Wheel1;
      GameObject Wheel2;
      GameObject Wheel3;
+   public  GameObject TaxingLights;
+    public GameObject LandingLights;
+    public GameObject AntiCollisionLights;
 
     
 
@@ -140,6 +143,7 @@ public class Aeronave : MonoBehaviour
    public bool isFacingS = false;
     bool FACESOUTH = false;
    public bool isFacingN = false;
+   public bool ReadyToTaxi = false;
 
    public bool ReadyForDeparture = false;
     
@@ -159,6 +163,18 @@ public class Aeronave : MonoBehaviour
         Wheel1 = transform.GetChild(0).gameObject;
         Wheel2 = transform.GetChild(1).gameObject;
         Wheel3 = transform.GetChild(2).gameObject;
+        LandingLights = transform.GetChild(7).gameObject;
+        TaxingLights = transform.GetChild(8).gameObject;
+        AntiCollisionLights = transform.GetChild(9).gameObject;
+
+        //DEACTIVATE AT START-------------------
+        LandingLights.gameObject.SetActive(false);
+        TaxingLights.gameObject.SetActive(false);
+        AntiCollisionLights.gameObject.SetActive(false);
+        //---------------------------
+
+
+
 
     }
 
@@ -166,7 +182,13 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
-       
+
+        //-------------------------------------------------------------------------------------------------------
+        if (ReadyToTaxi == true) { TaxingLights.SetActive(true); }
+        if (takeOff == true) { TaxingLights.SetActive(false);  InvokeRepeating("antiCollisionLights1", 2, 120); }
+        //-------------------------------------------------------------------------------------------------------
+
+
         //INCLINAR LA AERONAVE AL DESPEGAR------------------------
         if (Inclinacion == true)
         {
@@ -608,7 +630,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position) { PushBackFacingNorthVIndex += 1; }
-        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; FACESOUTH = true; print(transform.rotation.eulerAngles.y); }
+        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; ReadyToTaxi = true; FACESOUTH = true;  }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -617,7 +639,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position) { PushBackFacingSouthVIndex += 1; }
-        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; FACESOUTH = true; }
+        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; FACESOUTH = true;  ReadyToTaxi = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -797,8 +819,22 @@ public class Aeronave : MonoBehaviour
     {
         Destroy(gameObject, 5);
     }
-        
 
+    public void antiCollisionLights1 ()
+    {
+        AntiCollisionLights.SetActive(true);
+        LandingLights.SetActive(true);
+        Invoke("antiCollisionLights2", 6f);
+    }
+
+    public void antiCollisionLights2()
+    {
+        AntiCollisionLights.SetActive(false);
+        LandingLights.SetActive(false);
+        Invoke("antiCollisionLights1", 50f);
+    }
+
+    
 }
 
 

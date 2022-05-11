@@ -5,14 +5,19 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    public bool gameOver = false;
+
     public int SecuenciaDeAterrizaje = 1;
     public int tirillaCounterAmarilla = 0;
     public int tirillaCounterAzul = 0;
     public float _cycleLenght = 0.3f;
+    public int level;
 
     public bool airActive;
 
-    [Header("Port Tirillas Amarillas ")]
+    bool Call = false;
+
+    [Header("todas las AERONAVES ")]
     public GameObject port1;
     public GameObject port2;
     public GameObject port3;
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-
+        Call = true;
     }
     void Start()
     {
@@ -100,7 +105,32 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        if(level == 1)
+        {
+            
+
+            if (Call == true) 
+            {
+
+                A2.GetComponentInParent<onclick>().InvokeAeronave(2);
+                B1.GetComponentInParent<onclick>().InvokeAeronave(6);
+                B2.GetComponentInParent<onclick>().InvokeAeronave(9);
+                B3.GetComponentInParent<onclick>().InvokeAeronave(13);
+
+                Call = false; 
+            }
+            
+            //A2.GetComponentInParent<onclick>().InvokeAeronave(2);
+           
+            /*
+            A3.GetComponentInParent<onclick>().Invoke("ActivarAeronave", 2f);
+            A4.GetComponentInParent<onclick>().Invoke("ActivarAeronave", 2f);
+            A5.GetComponentInParent<onclick>().Invoke("ActivarAeronave", 2f);
+            */
+        }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
         if (SecuenciaDeAterrizaje == 4) { SecuenciaDeAterrizaje = 1; }
@@ -354,4 +384,9 @@ public class GameManager : MonoBehaviour
         tirillaCounterAzul = tirillaCounterAzul + 1;
     }
 
+    public void callA2 ()
+
+    {
+
+    }
 }

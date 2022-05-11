@@ -69,11 +69,14 @@ TagManager:
   - Onsight
   - Canvas
   - RFP
+  - TaxingLight
+  - PBC
+  - HSC
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PBC
   - Water
   - UI
   - FrontAndBack

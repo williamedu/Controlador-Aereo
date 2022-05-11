@@ -12,7 +12,7 @@ public class PushBackCar : MonoBehaviour
     float lockY;
     public float speed = 5;
     public float speed2 = 20;
-    float Turnspeed = 10;
+    //float Turnspeed = 10;
     public bool turnR = false;
     public bool turnL = false;
     public bool MovingForward = false;

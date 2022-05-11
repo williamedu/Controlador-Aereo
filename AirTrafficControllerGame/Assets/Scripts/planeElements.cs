@@ -10,6 +10,7 @@ public class planeElements : MonoBehaviour
     public TextMeshProUGUI AirCraftModel;
     public TextMeshProUGUI statusPlane;
     public TextMeshProUGUI Stand;
+    public GameObject waypointSystem;
 
     public dropDown dropDown;
 
@@ -61,6 +62,8 @@ public class planeElements : MonoBehaviour
 
         callSign.text = callSingn;
         AirCraftModel.text = modeloDeAeronave;
+
+        waypointSystem.GetComponent<Waypoint_Indicator>().textDescription = callSign.text;
     }
 
     private void OnTriggerEnter(Collider other)

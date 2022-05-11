@@ -11,7 +11,7 @@ public class onclick : MonoBehaviour
     private void Start()
     {
         
-       Invoke("ActivarAeronave", ActivacionAeronave);
+      // Invoke("ActivarAeronave", ActivacionAeronave);
         craftOutLine = GetComponent<Outline>();
     }
 
@@ -57,7 +57,15 @@ public class onclick : MonoBehaviour
     {
         activar = true;
         this.gameObject.GetComponent<Waypoint_Indicator>().enableGameObject = true;
+        print("se llamo esta aeronave");
+        CancelInvoke();
 
+    }
+
+    public void InvokeAeronave(int i)
+    {
+        Invoke("ActivarAeronave", i);
+       
     }
     public void UnableToClick()
     {
@@ -69,6 +77,7 @@ public class onclick : MonoBehaviour
         canClick = true;
 
     }
+
 
      /*IEnumerator luces()
     {

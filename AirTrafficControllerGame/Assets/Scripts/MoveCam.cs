@@ -9,7 +9,7 @@ public class MoveCam : MonoBehaviour {
     public bool y;
     public float height = 1f;
     public float width = 1f;
-    float zoom = 80f;
+    //float zoom = 80f;
     //public Camera cam;
 
     void Start()
