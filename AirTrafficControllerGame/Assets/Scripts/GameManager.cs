@@ -112,11 +112,15 @@ public class GameManager : MonoBehaviour
 
             if (Call == true) 
             {
-
-                A2.GetComponentInParent<onclick>().InvokeAeronave(2);
-                B1.GetComponentInParent<onclick>().InvokeAeronave(6);
-                B2.GetComponentInParent<onclick>().InvokeAeronave(9);
-                B3.GetComponentInParent<onclick>().InvokeAeronave(13);
+                A3.GetComponentInParent<onclick>().InvokeAeronave(1);
+                A2.GetComponentInParent<onclick>().InvokeAeronave(1);
+                B1.GetComponentInParent<onclick>().InvokeAeronave(1);
+                B2.GetComponentInParent<onclick>().InvokeAeronave(1);
+                B3.GetComponentInParent<onclick>().InvokeAeronave(1);
+                B4.GetComponentInParent<onclick>().InvokeAeronave(1);
+                C1.GetComponentInParent<onclick>().InvokeAeronave(1);
+                C2.GetComponentInParent<onclick>().InvokeAeronave(2);
+                C3.GetComponentInParent<onclick>().InvokeAeronave(3);
 
                 Call = false; 
             }

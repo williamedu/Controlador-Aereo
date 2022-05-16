@@ -72,6 +72,17 @@ TagManager:
   - TaxingLight
   - PBC
   - HSC
+  - LCS
+  - Tierra
+  - DC
+  - TOC
+  - BC
+  - TOD
+  - dropDownA3
+  - dropDownA2
+  - dropDownB1
+  - dropDownB2
+  - dropDownB3
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Aeronave : MonoBehaviour
 {
-
+    GameManager GM;
      GameObject child;
      GameObject Wheel1;
      GameObject Wheel2;
@@ -85,6 +85,7 @@ public class Aeronave : MonoBehaviour
     bool PushBackRotation90 = false;
     bool PushBackRotation = false;
     bool Rotation270 = false;
+    bool Ro270 = true;
     bool Rotation270V = false;
     bool rotation180 = false;
     bool rotation180VVV = false;
@@ -141,19 +142,23 @@ public class Aeronave : MonoBehaviour
     public bool HoldPosition = false;
 
    public bool isFacingS = false;
-    bool FACESOUTH = false;
+   public bool FACESOUTH = false;
    public bool isFacingN = false;
    public bool ReadyToTaxi = false;
 
    public bool ReadyForDeparture = false;
     
     public bool tirillaOffScreen = false;
+    public bool Domie1 = true;
+    public bool Clearence = false;
+   public bool N = false;
+    public bool S = false;
 
     public  bool isActive; // para referenciar que la tirilla esta active o no
     // Start is called before the first frame update
     void Start()
     {
-        
+        GM = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         
         RB = GetComponent<Rigidbody>();
 
@@ -262,33 +267,33 @@ public class Aeronave : MonoBehaviour
         //--------------------------------TAXING-----------------------------------------------------------------------
         if (taxiRunWay17ViaCJToA == true || taxiRunWay17ViaDJToA == true || taxiRunWay17ViaCJToB || taxiRunWay17ViaDJToB == true || taxiRunWay17ViaAToA == true  || taxiRunWay17ViaCJToC == true || taxiRunWay35ViaDJToH == true || taxiRunWay35ViaDJToG == true || taxiRunWay35ViaCJToH == true || taxiRunWay35ViaCJToG == true) { taxing = true; }
 
-            //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO ALFA
+        //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO ALFA
 
-            if (taxiRunWay17ViaCJToA == true) { MovetoWayPointR17VIACJ(); }
+        if (taxiRunWay17ViaCJToA == true) {   MovetoWayPointR17VIACJ(); } 
 
         //-------------------------------------------------------------------------------------------------------
 
         //----------------------------PARA IR A LA PISTA 17 VIA DELTA JULIET TO ALFA
 
-        if (taxiRunWay17ViaDJToA == true) { MovetoWayPointR17VIADJ(); }
+        if (taxiRunWay17ViaDJToA == true) {  MovetoWayPointR17VIADJ();  }
 
         //-------------------------------------------------------------------------------------------------------
 
         //----------------------------PARA IR A LA PISTA 17 VIA CHARLIE JULIET TO BRAVO
 
-        if (taxiRunWay17ViaCJToB == true) { MovetoWayPointR17VIACJToB(); }
+        if (taxiRunWay17ViaCJToB == true) {   MovetoWayPointR17VIACJToB(); }
 
         //-------------------------------------------------------------------------------------------------------
 
         //----------------------------PARA IR A LA PISTA 17 VIA DELTA JULIET TO BRAVO
 
-        if (taxiRunWay17ViaDJToB == true) { MovetoWayPointR17VIADJToB(); }
+        if (taxiRunWay17ViaDJToB == true) {   MovetoWayPointR17VIADJToB(); }
 
-        //-------------------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------------------
 
-        //----------------------------PARA IR A LA PISTA 17 VIA ALFA  TO ALFA
+            //----------------------------PARA IR A LA PISTA 17 VIA ALFA  TO ALFA
 
-        if (taxiRunWay17ViaAToA == true) { MovetoWayPointR17VIaAToA(); }
+            if (taxiRunWay17ViaAToA == true) { MovetoWayPointR17VIaAToA(); }
 
         //-------------------------------------------------------------------------------------------------------
 
@@ -398,14 +403,14 @@ public class Aeronave : MonoBehaviour
 
         //----------------------ROTAR 270---------------------------------------------------------------------------------
 
-        if (Rotation270 == true)
+        if (Rotation270 == true && Ro270 == true)
         {
             transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
 
             if (transform.rotation.eulerAngles.y >= 270)
             {
 
-                Rotation270 = false;
+                Rotation270 = false; Ro270 = false;
             }
         }
 
@@ -604,7 +609,7 @@ public class Aeronave : MonoBehaviour
         //------------------------------------------------------------------------------------------------------
 
         //----------------------------------DESACTIVAR GRAVEDAD DE LA AERONAVE--------------------------------------------------------------------
-        if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6; }
+        if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6; print( "speed se activo por " + other); }
 
         //----------------------------------PROCESO DE DESPEGUE--------------------------------------------------------------------
 
@@ -630,7 +635,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingNorthV[PushBackFacingNorthVIndex].transform.position) { PushBackFacingNorthVIndex += 1; }
-        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; ReadyToTaxi = true; FACESOUTH = true;  }
+        if (transform.position == PushBackFacingNorthV[3].transform.position) { PushBackFacingNorthB = false; isFacingN = true; ReadyToTaxi = true; FACESOUTH = true; N = true;  }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -639,7 +644,7 @@ public class Aeronave : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == PushBackFacingSouthV[PushBackFacingSouthVIndex].transform.position) { PushBackFacingSouthVIndex += 1; }
-        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; FACESOUTH = true;  ReadyToTaxi = true; }
+        if (transform.position == PushBackFacingSouthV[3].transform.position) { PushBackFacingSouthB = false; isFacingS = true; FACESOUTH = true;  ReadyToTaxi = true; S = true; }
     }
     //------------------------------------------------------------------------------------------------------
 
@@ -832,6 +837,14 @@ public class Aeronave : MonoBehaviour
         AntiCollisionLights.SetActive(false);
         LandingLights.SetActive(false);
         Invoke("antiCollisionLights1", 50f);
+    }
+
+
+    void gameOver()
+    {
+        GM.gameOver = true;
+        MoveSpeed = 0.1f;
+        CancelInvoke();
     }
 
     

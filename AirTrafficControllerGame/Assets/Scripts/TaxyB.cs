@@ -38,42 +38,253 @@ public class TaxyB : MonoBehaviour
     {
         if (myDrop.value == 1)
         {
-            holdShortOf.SetActive(true);
-            plane.GetComponent<Aeronave>().isFacingN = false;
-            plane.GetComponent<Aeronave>().isFacingS = false;
-            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
-            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
-            plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
-            planeStatus.gameObject.GetComponent<planeStatus>().taxingToBViaCJText();
-            planeStatus.GetComponent<Button>().enabled = false;
-            planeStatus.GetComponent<planeStatus>().waitingImage();
-            //planeMovement.gameObject.SetActive(true);
+            if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().S == true)
 
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
 
-            //taxyOptions.gameObject.SetActive(false);
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
 
+            if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().S == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+
+            if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().S == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+            if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().S == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+            if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().S == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
 
         }
 
         if (myDrop.value == 2)
         {
 
-            holdShortOf.SetActive(true);
-            plane.GetComponent<Aeronave>().isFacingN = false;
-            plane.GetComponent<Aeronave>().isFacingS = false;
-            lightTirilla.GetComponentInChildren<lightsTest>().start = true;
-            lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
-            plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
-            planeStatus.gameObject.GetComponent<planeStatus>().taxingToBViaDJText();
-            planeStatus.GetComponent<Button>().enabled = false;
-            planeStatus.GetComponent<planeStatus>().waitingImage();
-           // planeMovement.gameObject.SetActive(true);
+            if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().N == true)
 
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
 
-            //taxyOptions.gameObject.SetActive(false);
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+
+            if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().N == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+
+            if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().N == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+
+            if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().N == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
+
+            if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().N == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+            }
+            if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToB = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+            }
 
 
 
         }
     }
 }
+
+
