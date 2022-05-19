@@ -83,6 +83,7 @@ TagManager:
   - dropDownB1
   - dropDownB2
   - dropDownB3
+  - AudioManager
   layers:
   - Default
   - TransparentFX

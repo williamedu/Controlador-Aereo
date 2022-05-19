@@ -14,7 +14,7 @@ public class Demo : MonoBehaviour {
 
     private void Start () {
         timer1
-        .SetDuration(10)
+        .SetDuration(Random.Range(30,60))
       .OnEnd(() => desactivate())
       .Begin () ;
         

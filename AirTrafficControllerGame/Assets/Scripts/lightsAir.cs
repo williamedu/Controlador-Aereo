@@ -33,7 +33,8 @@ public class lightsAir : MonoBehaviour
             {
                 case "0":
                     image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
-                    //Play sound
+                    //
+                    //sound
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case "1":

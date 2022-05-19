@@ -8,10 +8,12 @@ public class onclick : MonoBehaviour
     public static bool canClick = true;
     public bool activar;
     public Outline craftOutLine;
+    public AudioManager audioManager;
+
     private void Start()
     {
-        
-      // Invoke("ActivarAeronave", ActivacionAeronave);
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        // Invoke("ActivarAeronave", ActivacionAeronave);
         craftOutLine = GetComponent<Outline>();
     }
 
@@ -58,12 +60,14 @@ public class onclick : MonoBehaviour
         activar = true;
         this.gameObject.GetComponent<Waypoint_Indicator>().enableGameObject = true;
         print("se llamo esta aeronave");
+        audioManager.Play(gameObject.name);
         CancelInvoke();
 
     }
 
     public void InvokeAeronave(int i)
     {
+       
         Invoke("ActivarAeronave", i);
        
     }

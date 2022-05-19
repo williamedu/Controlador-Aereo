@@ -6,7 +6,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver = false;
-
+    public AudioManager audioManager;
     public int SecuenciaDeAterrizaje = 1;
     public int tirillaCounterAmarilla = 0;
     public int tirillaCounterAzul = 0;
@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         airActive = false;
         _cycleLenght = 0.3f;
         port1 = GameObject.Find("tirilla1");
@@ -112,16 +113,14 @@ public class GameManager : MonoBehaviour
 
             if (Call == true) 
             {
-                A3.GetComponentInParent<onclick>().InvokeAeronave(1);
-                A2.GetComponentInParent<onclick>().InvokeAeronave(1);
-                B1.GetComponentInParent<onclick>().InvokeAeronave(1);
-                B2.GetComponentInParent<onclick>().InvokeAeronave(1);
-                B3.GetComponentInParent<onclick>().InvokeAeronave(1);
-                B4.GetComponentInParent<onclick>().InvokeAeronave(1);
-                C1.GetComponentInParent<onclick>().InvokeAeronave(1);
-                C2.GetComponentInParent<onclick>().InvokeAeronave(2);
-                C3.GetComponentInParent<onclick>().InvokeAeronave(3);
 
+                //A6.GetComponentInParent<onclick>().InvokeAeronave(2);
+                // A5.GetComponentInParent<onclick>().InvokeAeronave(10);
+                //  A4.GetComponentInParent<onclick>().InvokeAeronave(18);
+                //A3.GetComponentInParent<onclick>().InvokeAeronave(25);
+                // A2.GetComponentInParent<onclick>().InvokeAeronave(33);
+
+                C3.GetComponentInParent<onclick>().InvokeAeronave(1);
                 Call = false; 
             }
             

@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Waypoint Indicators/Demo/Scenes/Scene_4.unity
     guid: 6594a5d138261b641af80295194f3692
+  - enabled: 1
+    path: Assets/SimpleAirport/_Demo/JUEGO ORIGINAL/WELLINGTON/WELLINGTON 1.unity
+    guid: 2cc8923d8dffe914c8934f43c2232c06
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

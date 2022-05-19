@@ -22,6 +22,7 @@ public class TaxyA : MonoBehaviour
 
     public bool canDrop1 = true;
     public bool canDrop2 = true;
+    public bool domie1 = true;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().N == true)
                 {
@@ -62,6 +64,7 @@ public class TaxyA : MonoBehaviour
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                     planeMovement.gameObject.SetActive(true);
+                domie1 = false;
                     //planeMovement.gameObject.SetActive(true);
                     //holdShortOff.GetComponent<Button>().enabled = true;
                     //taxyOptions.gameObject.SetActive(false);
@@ -74,6 +77,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().N == true)
                 {
@@ -88,6 +92,7 @@ public class TaxyA : MonoBehaviour
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                     planeMovement.gameObject.SetActive(true);
+                domie1 = false;
                 //planeMovement.gameObject.SetActive(true);
 
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -99,6 +104,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().N == true)
                 {
@@ -113,6 +119,7 @@ public class TaxyA : MonoBehaviour
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -124,6 +131,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().N == true)
                 {
@@ -138,6 +146,7 @@ public class TaxyA : MonoBehaviour
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -148,6 +157,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().N == true)
                 {
@@ -162,10 +172,54 @@ public class TaxyA : MonoBehaviour
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
                 //taxyOptions.gameObject.SetActive(false);
+
+            }
+
+            if (plane.CompareTag("B4") && plane.gameObject.GetComponent<Aeronave>().S == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
+            }
+            if (plane.CompareTag("B4") && plane.gameObject.GetComponent<Aeronave>().N == true)
+            {
+                print("se fue por charlie");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToA = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+                domie1 = false;
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+
+            }
+
+            if (domie1 == true)
+            {
+                print(plane.name + "se fue por CJ to alfa");
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaCJToA = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
 
             }
 
@@ -177,6 +231,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
             if (plane.CompareTag("A3") && plane.gameObject.GetComponent<Aeronave>().S == true)
             {
@@ -187,10 +242,11 @@ public class TaxyA : MonoBehaviour
                 lightTirilla.GetComponentInChildren<lightsTest>().start = true;
                 lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
                 plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
-                planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
                 planeStatus.GetComponent<Button>().enabled = false;
                 planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -201,6 +257,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("A2") && plane.gameObject.GetComponent<Aeronave>().S == true)
                 {
@@ -209,11 +266,12 @@ public class TaxyA : MonoBehaviour
                     plane.GetComponent<Aeronave>().isFacingS = false;
                     lightTirilla.GetComponentInChildren<lightsTest>().start = true;
                     lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
-                    plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
-                    planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -225,6 +283,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B1") && plane.gameObject.GetComponent<Aeronave>().S == true)
                 {
@@ -234,10 +293,11 @@ public class TaxyA : MonoBehaviour
                     lightTirilla.GetComponentInChildren<lightsTest>().start = true;
                     lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
                     plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
-                    planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                    planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -249,6 +309,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B2") && plane.gameObject.GetComponent<Aeronave>().S == true)
                 {
@@ -258,10 +319,11 @@ public class TaxyA : MonoBehaviour
                     lightTirilla.GetComponentInChildren<lightsTest>().start = true;
                     lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
                     plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
-                    planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                    planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
@@ -273,6 +335,7 @@ public class TaxyA : MonoBehaviour
 
             {
                 print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
             }
                 if (plane.CompareTag("B3") && plane.gameObject.GetComponent<Aeronave>().S == true)
                 {
@@ -282,15 +345,57 @@ public class TaxyA : MonoBehaviour
                     lightTirilla.GetComponentInChildren<lightsTest>().start = true;
                     lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
                     plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
-                    planeStatus.GetComponent<planeStatus>().taxingToAViaCJtext();
+                    planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
                     planeStatus.GetComponent<Button>().enabled = false;
                     planeStatus.GetComponent<planeStatus>().waitingImage();
                 planeMovement.gameObject.SetActive(true);
+                domie1 = false;
 
                 //planeMovement.gameObject.SetActive(true);
                 //holdShortOff.GetComponent<Button>().enabled = true;
                 //taxyOptions.gameObject.SetActive(false);
 
+            }
+            if (plane.CompareTag("B4") && plane.gameObject.GetComponent<Aeronave>().N == true)
+
+            {
+                print(plane.name + " no se puede ir por aqui - 200 puntos");
+                domie1 = false;
+            }
+            if (plane.CompareTag("B4") && plane.gameObject.GetComponent<Aeronave>().S == true)
+            {
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
+                domie1 = false;
+
+                //planeMovement.gameObject.SetActive(true);
+                //holdShortOff.GetComponent<Button>().enabled = true;
+                //taxyOptions.gameObject.SetActive(false);
+
+            }
+
+
+
+            if (domie1 == true)
+            {
+                holdShortOf.SetActive(true);
+                plane.GetComponent<Aeronave>().isFacingN = false;
+                plane.GetComponent<Aeronave>().isFacingS = false;
+                lightTirilla.GetComponentInChildren<lightsTest>().start = true;
+                lightTirilla.GetComponentInChildren<lightsTest>().StartLights();
+                plane.GetComponent<Aeronave>().taxiRunWay17ViaDJToA = true;
+                planeStatus.GetComponent<planeStatus>().taxingToAViaDJText();
+                planeStatus.GetComponent<Button>().enabled = false;
+                planeStatus.GetComponent<planeStatus>().waitingImage();
+                planeMovement.gameObject.SetActive(true);
             }
 
 
