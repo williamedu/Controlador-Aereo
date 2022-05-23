@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public float _cycleLenght = 0.3f;
     public int level;
 
+    public string nextLevel = "level02";
+    public int levelToUnlock = 2;
+
     public bool airActive;
 
     bool Call = false;
@@ -102,9 +105,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void winLevel()
+    {
+        Debug.Log("se gano el nivel");
+        PlayerPrefs.SetInt("levelReached", levelToUnlock);
+    }
+
     // Update is called once per frame
     void Update()
     {
+
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         if(level == 1)
@@ -119,8 +129,13 @@ public class GameManager : MonoBehaviour
                 //  A4.GetComponentInParent<onclick>().InvokeAeronave(18);
                 //A3.GetComponentInParent<onclick>().InvokeAeronave(25);
                 // A2.GetComponentInParent<onclick>().InvokeAeronave(33);
+                B1.GetComponentInParent<onclick>().InvokeAeronave(1);
+               // B3.GetComponentInParent<onclick>().InvokeAeronave(2);
 
-                C3.GetComponentInParent<onclick>().InvokeAeronave(1);
+                //C3.GetComponentInParent<onclick>().InvokeAeronave(16);
+               // A2.GetComponentInParent<onclick>().InvokeAeronave(17);
+               // AV3.GetComponentInParent<onclick>().InvokeAeronave(30);
+               // AV1.GetComponentInParent<onclick>().InvokeAeronave(39);
                 Call = false; 
             }
             
@@ -171,83 +186,83 @@ public class GameManager : MonoBehaviour
 
         if (airActive == false)
         {
-            AIR1.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
-            AIR2.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            AIR1.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
+            AIR2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
     }
     public void desactivarTirillasGround()
     {
         // DESACTIVA TIRILLAS DE A
-        if (A2.GetComponentInParent<Aeronave>().isActive == true)
+        if (A2.GetComponentInParent<Aeronave>().isActive == true || pauseMenu.GameIsPaused == true )
         {
-            A2.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            A2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (A3.GetComponentInParent<Aeronave>().isActive == true)
         {
-            A3.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            A3.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (A4.GetComponentInParent<Aeronave>().isActive == true)
         {
-            A4.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            A4.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (A5.GetComponentInParent<Aeronave>().isActive == true)
         {
-            A5.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            A5.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (A6.GetComponentInParent<Aeronave>().isActive == true)
         {
-            A6.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            A6.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
 
         // DESACTIVA TIRILLAS DE B
         if (B1.GetComponentInParent<Aeronave>().isActive == true)
         {
-            B1.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            B1.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
 
         if (B2.GetComponentInParent<Aeronave>().isActive == true)
         {
-            B2.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            B2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (B3.GetComponentInParent<Aeronave>().isActive == true)
         {
-            B3.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            B3.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (B4.GetComponentInParent<Aeronave>().isActive == true)
         {
-            B4.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            B4.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         // DESACTIVA TIRILLAS DE C
         if (C1.GetComponentInParent<Aeronave>().isActive == true)
         {
-            C1.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            C1.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (C2.GetComponentInParent<Aeronave>().isActive == true)
         {
-            C2.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            C2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (C3.GetComponentInParent<Aeronave>().isActive == true)
         {
-            C3.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            C3.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
 
         // DESACTIVA TIRILLAS DE AV
         if (AV1.GetComponentInParent<Aeronave>().isActive == true)
         {
-            AV1.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            AV1.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
 
         if (AV2.GetComponentInParent<Aeronave>().isActive == true)
         {
-            AV2.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            AV2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (AV3.GetComponentInParent<Aeronave>().isActive == true)
         {
-            AV3.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            AV3.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }
         if (AV4.GetComponentInParent<Aeronave>().isActive == true)
         {
-            AV4.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBounce);
+            AV4.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
 
         }
 
@@ -349,6 +364,27 @@ public class GameManager : MonoBehaviour
         port4.gameObject.SetActive(true);
         port5.gameObject.SetActive(true);
         port6.gameObject.SetActive(true);
+    }
+
+    public void desactivarPortaTirrillasAzules()
+    {
+        portBLUE1.gameObject.SetActive(false);
+        portBLUE2.gameObject.SetActive(false);
+        portBLUE3.gameObject.SetActive(false);
+        portBLUE4.gameObject.SetActive(false);
+        portBLUE5.gameObject.SetActive(false);
+        portBLUE6.gameObject.SetActive(false);
+
+    }
+
+    public void activarPortaTirillasAzules()
+    {
+        portBLUE1.gameObject.SetActive(true);
+        portBLUE2.gameObject.SetActive(true);
+        portBLUE3.gameObject.SetActive(true);
+        portBLUE4.gameObject.SetActive(true);
+        portBLUE5.gameObject.SetActive(true);
+        portBLUE6.gameObject.SetActive(true);
     }
 
     public void airTrue()

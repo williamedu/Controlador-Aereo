@@ -13,6 +13,7 @@ public class Aeronave : MonoBehaviour
    public  GameObject TaxingLights;
     public GameObject LandingLights;
     public GameObject AntiCollisionLights;
+    public AudioManager audioManager;
 
     
 
@@ -153,13 +154,16 @@ public class Aeronave : MonoBehaviour
     public bool Clearence = false;
    public bool N = false;
     public bool S = false;
+    bool talkReadyToTaxi = true;
+    bool talkrogerthat = true;
+    bool talkReadyForDeparture = true;
 
     public  bool isActive; // para referenciar que la tirilla esta active o no
     // Start is called before the first frame update
     void Start()
     {
         GM = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         RB = GetComponent<Rigidbody>();
 
         ConstSpeed = MoveSpeed;
@@ -187,12 +191,55 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
+        
+        if (ReadyToTaxi == true)
+        {
+          
+            if (talkReadyToTaxi == true)
+            {
+                if (audioManager.hablando == false)
+                {
+                    readytoTaxi();
+                    talkReadyToTaxi = false;
+                    
+                }
+            }
+        }
+
+        if (taxing == true && N == true || S == true)
+        {
+           if (talkrogerthat == true)
+            {
+                if (audioManager.hablando == false)
+                {
+                    talkrogerthat = false;
+                    rogerthat();
+
+                }
+            }
+        }
+
+        if (ReadyForDeparture == true)
+        {
+            if (talkReadyForDeparture == true)
+            {
+                if (audioManager.hablando == false)
+                {
+                    talkReadyForDeparture = false;
+                    readyfoorDeparture();
+
+                }
+            }
+        }
+
+
 
         //-------------------------------------------------------------------------------------------------------
-        if (ReadyToTaxi == true) { TaxingLights.SetActive(true); }
+        if (ReadyToTaxi == true) { TaxingLights.SetActive(true);  }
         if (takeOff == true) { TaxingLights.SetActive(false);  InvokeRepeating("antiCollisionLights1", 2, 120); }
         //-------------------------------------------------------------------------------------------------------
 
+        
 
         //INCLINAR LA AERONAVE AL DESPEGAR------------------------
         if (Inclinacion == true)
@@ -847,7 +894,20 @@ public class Aeronave : MonoBehaviour
         CancelInvoke();
     }
 
-    
+    public void readytoTaxi ()
+    {
+        audioManager.Play(gameObject.name + "T");
+    }
+
+    public void rogerthat()
+    {
+        audioManager.Play(gameObject.name + "R");
+    }
+
+    public void readyfoorDeparture()
+    {
+        audioManager.Play(gameObject.name + "D");
+    }
 }
 
 

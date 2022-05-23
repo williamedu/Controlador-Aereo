@@ -7,6 +7,7 @@ using TMPro;
 
 public class lightsTest : MonoBehaviour
 {
+    public AudioManager audioManager;
     [Header("gameObjects en LightsText")]
 
     public GameObject holdShortOf;
@@ -38,6 +39,7 @@ public class lightsTest : MonoBehaviour
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         // referencian al plane automatico
         parent = transform.parent.parent.parent.parent;
         plane = parent.gameObject;
@@ -70,6 +72,7 @@ public class lightsTest : MonoBehaviour
             TaxyButton.GetComponent<planeStatus>().normalImage();
             
 
+
         }
 
          if (plane.GetComponent<Aeronave>().PushBackFacingSouthB == false && plane.GetComponent<Aeronave>().isFacingS==true)
@@ -78,7 +81,8 @@ public class lightsTest : MonoBehaviour
             TaxyButton.GetComponent<Button>().enabled = true;
             TaxyButton.gameObject.GetComponent<planeStatus>().readyToTaxytext();
             TaxyButton.GetComponent<planeStatus>().normalImage();
-           
+            
+
 
 
         }

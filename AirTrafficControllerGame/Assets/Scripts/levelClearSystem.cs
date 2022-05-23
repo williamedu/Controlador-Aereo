@@ -25,7 +25,7 @@ public class levelClearSystem : MonoBehaviour
         numerOfTakeOff = GameObject.FindGameObjectWithTag("TOC").gameObject;
     }
 
-
+    
 
 
     private void Update()
@@ -40,6 +40,7 @@ public class levelClearSystem : MonoBehaviour
 
             if (numerOfTakeOff.GetComponent<TakeOffChecker>().takeoffCounter == 3)
             {
+                GameManager.GetComponent<GameManager>().winLevel();
                 levelClear = true;
                 levelComplete();
             }

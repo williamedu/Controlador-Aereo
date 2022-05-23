@@ -94,6 +94,7 @@ public class planeStatus : MonoBehaviour
     public void readyToTaxytext()
     {
         status.text = readyToTaxy;
+       
     }
 
     public void taxingToAViaCJtext()
