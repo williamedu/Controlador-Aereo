@@ -10,6 +10,7 @@ public class pauseMenu : MonoBehaviour
     public RectTransform pauseMenuFrame;
     public SceneFader sceneFader;
     public GameObject pauseCanvas;
+    public RectTransform SettingsMenuFrame;
     public static bool GameIsPaused = false;
     public bool ImOnGround = true;
 
@@ -188,6 +189,17 @@ public class pauseMenu : MonoBehaviour
         {
             ImOnGround = true;
         }
+    }
+
+    public void SettingsFrameAnim()
+    {
+        SettingsMenuFrame.DOScale(Vector3.one, 0.2f).SetEase(Ease.InBounce);
+    }
+
+    public void HideSettingsFrame()
+    {
+        SettingsMenuFrame.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce);
+
     }
 
     public void continueButton()

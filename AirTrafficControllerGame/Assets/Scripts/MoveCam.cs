@@ -9,25 +9,16 @@ public class MoveCam : MonoBehaviour {
     public bool y;
     public float height = 1f;
     public float width = 1f;
-    //float zoom = 80f;
-    //public Camera cam;
+    
 
     void Start()
     {
-        //cam = GetComponent<Camera>();
     }
 
     private void Update()
     {
         
-        //stretch view//
-       /* cam.ResetProjectionMatrix();
-        var m = cam.projectionMatrix;
-
-        m.m11 *= height;
-        m.m00 *= width;
-        cam.projectionMatrix = m;*/
-
+        
 
 
         if (Input.GetMouseButtonUp(0))
