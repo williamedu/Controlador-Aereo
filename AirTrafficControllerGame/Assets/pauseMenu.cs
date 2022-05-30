@@ -9,10 +9,14 @@ public class pauseMenu : MonoBehaviour
 {
     public RectTransform pauseMenuFrame;
     public SceneFader sceneFader;
-    public GameObject pauseCanvas;
+    public  GameObject pauseCanvas;
+    public GameObject RWYIndicators;
+    public AudioManager audioManager;
     public RectTransform SettingsMenuFrame;
     public static bool GameIsPaused = false;
     public bool ImOnGround = true;
+    
+    public Animator _anim;
 
 
     [Header("Otehr Objects")]
@@ -25,6 +29,7 @@ public class pauseMenu : MonoBehaviour
 
 
     public GameObject gameManager;
+    public GameObject settingsFrame;
 
     [Header("SingsAmarillas ")]
     public RectTransform T1;
@@ -42,6 +47,12 @@ public class pauseMenu : MonoBehaviour
     public RectTransform T5B;
     public RectTransform T6B;
 
+    public List<GameObject> WayPointsIndicators = new List<GameObject>();
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        _anim = gameObject.GetComponent<Animator>();
+    }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -49,6 +60,11 @@ public class pauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                     Resume();
+                audioManager.GetComponent<AudioManager>().ActivarSonido();
+                onclick.canClick = true;
+                MoveCam.canMoveCam = true;
+                WayPointsIndicatorsOn();
+                RWYIndicators.SetActive(true);
                 ground.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
                 approach.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
                 conditions.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
@@ -92,9 +108,15 @@ public class pauseMenu : MonoBehaviour
                     desactivateSingsAzules();
                 }
 
-                
+
 
                 // gameManager
+                audioManager.GetComponent<AudioManager>().desactivarSonido();
+                onclick.canClick = false;
+                audioManager.PlayVFX("pause");
+                MoveCam.canMoveCam = false;
+                wayPointIndicatorsOff();
+                RWYIndicators.SetActive(false);
                 ground.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
                 approach.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
                 conditions.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
@@ -104,10 +126,9 @@ public class pauseMenu : MonoBehaviour
                 });
 
             }
-       
+            
 
-        //pauseMenuFrame.DOScale(Vector3.one, 0.2f).SetEase(Ease.InBounce);
-    }
+        }
     }
 
     public void Resume()
@@ -191,15 +212,76 @@ public class pauseMenu : MonoBehaviour
         }
     }
 
+    public void winLevel()
+    {
+        //esto se usa en levelClearSystem para determinar que se gano el nivel y activar los parametros aqui debajo
+        onclick.canClick = false; // para desactivar clicks on win screem
+        MoveCam.canMoveCam = false;
+        wayPointIndicatorsOff();
+        RWYIndicators.SetActive(false);
+       
+
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+    public void removeButtonsOffScreem()
+    {
+        // esta funcion tambien va en level clearsystem para remover los botones antes
+        desactivateSingsAzules();
+        desactivateSingsAmarillas();
+        removeAbrebiation();
+        
+    }
+
+    public void removeAbrebiation()
+    {
+        // para abreviar el codigo de arriba
+        ground.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
+        approach.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
+        conditions.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
+        quest.DOAnchorPosX(-843f, 0.1f).SetEase(Ease.InBounce);
+    }
+    public void activarBackFrame()
+    {
+        // para activar el frame en levelwin system primero que algunas funiones
+        pauseCanvas.SetActive(true);
+
+    }
+    public void SelectSound()
+    {
+        audioManager.PlayVFX("select");
+
+    }
     public void SettingsFrameAnim()
     {
-        SettingsMenuFrame.DOScale(Vector3.one, 0.2f).SetEase(Ease.InBounce);
+        settingsFrame.GetComponent<Animator>().SetBool("pauseMenuAnim", true);
+        settingsFrame.GetComponent<settingsMenu>().settinsIsActive = true;
+        this.gameObject.SetActive(false);
+        
     }
 
     public void HideSettingsFrame()
     {
-        SettingsMenuFrame.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce);
+        settingsFrame.GetComponent<settingsMenu>().settinsIsActive = false;
+        this.gameObject.SetActive(true);
+        settingsFrame.GetComponent<Animator>().SetBool("pauseMenuAnim", false);
 
+    }
+
+    public void wayPointIndicatorsOff()
+    {
+        foreach (var wayPoint in WayPointsIndicators)
+        {
+            wayPoint.GetComponent<Waypoint_Indicator>().enabled = false;
+        }
+    }
+
+    public void WayPointsIndicatorsOn()
+    {
+        foreach (var wayPoint in WayPointsIndicators)
+        {
+            wayPoint.GetComponent<Waypoint_Indicator>().enabled = true;
+        }
     }
 
     public void continueButton()
@@ -207,6 +289,11 @@ public class pauseMenu : MonoBehaviour
         if (GameIsPaused)
         {
             Resume();
+            audioManager.GetComponent<AudioManager>().ActivarSonido();
+            onclick.canClick = true;
+            MoveCam.canMoveCam = true;
+            WayPointsIndicatorsOn();
+            RWYIndicators.SetActive(true);
             ground.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
             approach.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
             conditions.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
@@ -253,6 +340,11 @@ public class pauseMenu : MonoBehaviour
 
 
             // gameManager
+            audioManager.GetComponent<AudioManager>().desactivarSonido();
+            onclick.canClick = false;
+            MoveCam.canMoveCam = false;
+            wayPointIndicatorsOff();
+            RWYIndicators.SetActive(false);
             ground.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
             approach.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);
             conditions.DOAnchorPosY(16, 0.1f).SetEase(Ease.InBounce);

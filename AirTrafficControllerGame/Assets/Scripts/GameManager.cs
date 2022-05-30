@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public int tirillaCounterAzul = 0;
     public float _cycleLenght = 0.3f;
     public int level;
-
+    public GameObject pauseWinLvelFrame;
     public string nextLevel = "level02";
     public int levelToUnlock = 2;
 
@@ -125,10 +125,10 @@ public class GameManager : MonoBehaviour
             {
 
                 //A6.GetComponentInParent<onclick>().InvokeAeronave(2);
-                // A5.GetComponentInParent<onclick>().InvokeAeronave(10);
+                 A5.GetComponentInParent<onclick>().InvokeAeronave(10);
                 //  A4.GetComponentInParent<onclick>().InvokeAeronave(18);
-                //A3.GetComponentInParent<onclick>().InvokeAeronave(25);
-                // A2.GetComponentInParent<onclick>().InvokeAeronave(33);
+                A3.GetComponentInParent<onclick>().InvokeAeronave(25);
+                 A2.GetComponentInParent<onclick>().InvokeAeronave(33);
                 B1.GetComponentInParent<onclick>().InvokeAeronave(1);
                // B3.GetComponentInParent<onclick>().InvokeAeronave(2);
 
@@ -412,6 +412,10 @@ public class GameManager : MonoBehaviour
         CancelInvoke();
     }
 
+    public void activarBackFrame()
+    {
+        pauseWinLvelFrame.SetActive(true);
+    }
 
     public void tirllaAmarilla()
     {
@@ -426,6 +430,28 @@ public class GameManager : MonoBehaviour
     public void callA2 ()
 
     {
+
+    }
+
+    public void SelectSound()
+    {
+        audioManager.PlayVFX("select");
+
+    }
+    public void HoverSound()
+    {
+        audioManager.PlayVFX("hover");
+
+    }
+    public void BackSound()
+    {
+        audioManager.PlayVFX("back");
+
+    }
+
+    public void SighnSound()
+    {
+        audioManager.PlayVFX("sighn");
 
     }
 }

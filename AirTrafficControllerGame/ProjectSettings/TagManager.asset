@@ -84,6 +84,7 @@ TagManager:
   - dropDownB2
   - dropDownB3
   - AudioManager
+  - CC
   layers:
   - Default
   - TransparentFX

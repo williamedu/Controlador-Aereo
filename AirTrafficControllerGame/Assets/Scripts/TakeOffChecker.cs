@@ -11,4 +11,9 @@ public class TakeOffChecker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Tierra")) { int i = 1; takeoffCounter = takeoffCounter + i; }
     }
+
+    public void paraPruebaGanarNivelTakeOff()
+    {
+        takeoffCounter = 3;
+    }
 }

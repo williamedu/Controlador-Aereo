@@ -11,6 +11,7 @@ public class Waypoint_Indicator : MonoBehaviour
     //1. Fixed Min Display Range offset between Standard and Centered Tracking
     //2. Added experimental split screen support
 
+
     #region Variables
     //Make this public to allow for external scripts to send Text Description copy here as "description"
     private bool isDynamic = false;
@@ -765,6 +766,8 @@ public class Waypoint_Indicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       
 
         if (mainCamera && mainCanvas)
         {

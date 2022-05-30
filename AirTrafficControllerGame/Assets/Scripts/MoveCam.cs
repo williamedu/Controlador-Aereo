@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCam : MonoBehaviour {
+public class MoveCam : MonoBehaviour
+{
 
     Vector2 touchDeltaPosition;
-    public float speed = 2;
+    public float speed;
     public bool x;
     public bool y;
+    public static bool canMoveCam = true;
     public float height = 1f;
     public float width = 1f;
-    
+    public bool test = false;
+
+    Vector2 lockRight = new Vector2(10.4f, -152.8f);
+
+
 
     void Start()
     {
+        print(transform.rotation.eulerAngles.y);
     }
 
     private void Update()
     {
-        
-        
+
+        if (gameObject.transform.rotation.eulerAngles.y >= 210)
+        {
+
+        }
 
 
         if (Input.GetMouseButtonUp(0))
@@ -44,8 +54,9 @@ public class MoveCam : MonoBehaviour {
             // -pointer_y * 0.5f, 0);
         }
 
-        if (Input.GetMouseButton(1) && y == false)
+        if (Input.GetMouseButton(1) && y == false && canMoveCam == true)
         {
+            print("si estoy aqui");
             speed = 2;
             x = true;
             float pointer_y = Input.GetAxis("Mouse X");
@@ -53,9 +64,18 @@ public class MoveCam : MonoBehaviour {
             //float pointer_x = Input.GetAxis("Mouse X");
             //transform.Translate(-pointer_x * 0.5f,
             // -pointer_y * 0.5f, 0);
+
         }
-        if (Input.GetMouseButton(1) && Input.GetMouseButton(0))
+        else
         {
+            print("no la puedes mover");
+        }
+
+
+        if (Input.GetMouseButton(1) && Input.GetMouseButton(0))
+
+        {
+            /*
             speed = 0;
         }
         if (Input.touchCount == 1)
@@ -67,12 +87,14 @@ public class MoveCam : MonoBehaviour {
                 gameObject.transform.Rotate(touchDeltaPosition.y * .05f, -touchDeltaPosition.x * .4f, 0);
             }
         }
+                */
+        }
+
+
     }
 
-
-
-    
 }
+
     
         
 

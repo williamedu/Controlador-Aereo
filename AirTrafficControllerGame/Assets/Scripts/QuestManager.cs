@@ -10,9 +10,9 @@ public class QuestManager : MonoBehaviour
     TakeOffChecker takeoffcounter;
     BravoChecker bravoCounter;
 
-    bool Objetive1 = true;
-    bool Objetive2 = true;
-    bool Objetive3 = true;
+    public bool Objetive1 = true;
+   public bool Objetive2 = true;
+    public bool Objetive3 = true;
 
 
 
@@ -42,9 +42,10 @@ public class QuestManager : MonoBehaviour
     {
        if (GM.level == 1) 
         {
+            print("estamos en el level 1");
+            if (DeltaChecker.DeltaCounter == 2 && Objetive1 == true) { LCS.Objective1 = true; Objetive1 = false; }
+            if (DeltaChecker.CharlieCounter == 1 && Objetive2 == true) { print("objetivo 2 completo"); LCS.Objective2 = true; Objetive2 = false; }
             if (bravoCounter.BravoCounter == 1 && Objetive3 == true) { LCS.Objective3 = true; Objetive3 = false; }
-            if (DeltaCounter.DeltaCounter == 2 && Objetive1 == true  ) {  LCS.Objective1 = true; Objetive1 = false; }
-            if (takeoffcounter.takeoffCounter == 3 && Objetive2 == true) { LCS.Objective2 = true; Objetive2 = false; }
         } 
     }
 

@@ -7,6 +7,7 @@ public class cameraMove : MonoBehaviour
     private Vector3 Origin;
     private Vector3 Diference;
     private Vector3 ResetCamera;
+    public bool canMoveCam = true;
 
     private bool drag = false;
 
@@ -17,7 +18,7 @@ public class cameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && canMoveCam == true)
         {
             Diference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
             if (drag == false)

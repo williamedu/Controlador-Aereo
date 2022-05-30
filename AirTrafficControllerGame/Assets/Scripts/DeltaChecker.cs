@@ -5,7 +5,8 @@ using UnityEngine;
 public class DeltaChecker : MonoBehaviour
 {
 
-    public int DeltaCounter;
+    public static int DeltaCounter;
+    public static int CharlieCounter;
 
 
 
@@ -16,7 +17,8 @@ public class DeltaChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Tierra")) { int i = 1; DeltaCounter = DeltaCounter + i; }
+        if (gameObject.CompareTag("DC"))  { if (other.CompareTag("Tierra")) { int i = 1; DeltaCounter = DeltaCounter + i; } }
+        if (gameObject.CompareTag("CC"))  { if (other.CompareTag("Tierra")) {  int i = 1; CharlieCounter = CharlieCounter + i; } }
     }
 
 

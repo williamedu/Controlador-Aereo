@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 public class levelClearSystem : MonoBehaviour
 {
+    AudioManager audioManager;
     [SerializeField] private Transform mainFrameGO;
     [SerializeField] private GameObject GameManager;
     [SerializeField] private GameObject questFrameAnim;
     [SerializeField] private GameObject numerOfTakeOff;
     [SerializeField] private Transform[] stars;
+    public GameObject ParticleStart1;
+    public GameObject ParticleStart2;
+    public GameObject ParticleStart3;
+
+    public GameObject pauseMenu;
+
+    bool ActivatePart1 = true;
+    bool ActivatePart2 = true;
+    bool ActivatePart3 = true;
 
     public bool levelClear;
     public bool Objective1;
@@ -21,6 +31,7 @@ public class levelClearSystem : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         GameManager = GameObject.FindGameObjectWithTag("GM").gameObject;
         numerOfTakeOff = GameObject.FindGameObjectWithTag("TOC").gameObject;
     }
@@ -40,7 +51,8 @@ public class levelClearSystem : MonoBehaviour
 
             if (numerOfTakeOff.GetComponent<TakeOffChecker>().takeoffCounter == 3)
             {
-                GameManager.GetComponent<GameManager>().winLevel();
+                GameManager.GetComponent<GameManager>().activarBackFrame();
+                GameManager.GetComponent<GameManager>().winLevel(); // para el playerPrebs
                 levelClear = true;
                 levelComplete();
             }
@@ -53,46 +65,92 @@ public void levelComplete()
     {
         if (QuestCounter == 1 && levelClear == true && seActivoLevelComplete == false)
         {
-            print("estrella1");
+            audioManager.GetComponent<AudioManager>().desactivarSonido();
+            pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
+            pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
             seActivoLevelComplete = true;
 
             mainFrameGO.DOScale(Vector3.one, 0.2f).SetEase(Ease.InCubic).OnComplete(() => {
 
+                particle1();
                 stars[0].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce).OnComplete(() => {
-                    
-            });
+                    pauseMenu.GetComponent<pauseMenu>().winLevel();
+
+            
         });
+            });
         }
 
 
         if (QuestCounter == 2 && levelClear == true && seActivoLevelComplete == false)
         {
-            print("estrella2");
+            audioManager.GetComponent<AudioManager>().desactivarSonido();
+            pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
+            pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
             seActivoLevelComplete = true;
 
             mainFrameGO.DOScale(Vector3.one, 0.2f).SetEase(Ease.InCubic).OnComplete(() => {
+                particle1();
                 stars[0].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce).OnComplete(() => {
-                    stars[1].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce);
+                    particle2();
+                    stars[1].DOScale(Vector3.one, 0.6f).SetEase(Ease.InBounce).OnComplete(() => {
+                        pauseMenu.GetComponent<pauseMenu>().winLevel();
 
-                });
+
+
+                    });
             });
+     });
         }
 
         if (QuestCounter == 3 && levelClear == true && seActivoLevelComplete == false)
         {
-            print("estrella3");
+            audioManager.GetComponent<AudioManager>().desactivarSonido();
+            pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
+            pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
             seActivoLevelComplete = true;
 
             mainFrameGO.DOScale(Vector3.one, 0.2f).SetEase(Ease.InCubic).OnComplete(() => {
+                particle1();
                 stars[0].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce).OnComplete(() => {
+                    particle2();
                     stars[1].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce).OnComplete(() => {
-                        stars[2].DOScale(Vector3.one, 0.4f).SetEase(Ease.OutElastic);
-                    });
+                        particle3();
+                        stars[2].DOScale(Vector3.one, 0.4f).SetEase(Ease.OutElastic).OnComplete(() => {
+                            pauseMenu.GetComponent<pauseMenu>().winLevel();
+
+
+                        });
                 });
             });
-
+         });
         }
 
+    }
+
+
+    public void particle1()
+    {
+        ParticleStart1.SetActive(true);
+        audioManager.PlayVFX("Start1");
+
+    }
+
+    public void particle2()
+    {
+        ParticleStart2.SetActive(true);
+        audioManager.PlayVFX("Start2");
+    }
+
+    public void particle3()
+    {
+        ParticleStart3.SetActive(true);
+        audioManager.PlayVFX("Start3");
+    }
+
+    public void paraPruebaPasarNivelObjetivo()
+    {
+        Objective1 = true;
     }
 
 }
