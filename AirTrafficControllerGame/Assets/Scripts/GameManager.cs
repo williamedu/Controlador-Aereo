@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -6,6 +6,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver = false;
+    public bool desactivarTrillasAzules = false; // se a►4ade al update debajo de "desactivar tirillas azules" para que cuando se gane el nivel este bool se ponga true y tambien se desactiven las tirllas de aire
     public AudioManager audioManager;
     public int SecuenciaDeAterrizaje = 1;
     public int tirillaCounterAmarilla = 0;
@@ -184,7 +185,7 @@ public class GameManager : MonoBehaviour
     {
         //DESACTIVAR TIRILLAS DE AIRE
 
-        if (airActive == false)
+        if (airActive == false || desactivarTrillasAzules == true)
         {
             AIR1.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
             AIR2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
@@ -387,6 +388,19 @@ public class GameManager : MonoBehaviour
         portBLUE6.gameObject.SetActive(true);
     }
 
+
+    public void desactivarTamarillasTAzulesPamarillasPAzules()
+    {
+        // esto es para desactivar porta tillias amarillas, las azules, las tirillas amarillas y azules de un fuetazo cuando se active el win level
+        desactivarTrillasAzules = true;
+
+        desactivarPortaTirrillasAzules();
+        desactivarPropsUI();
+
+        desactivarTirillasAire();
+        desactivarTirillasGround();
+        
+    }
     public void airTrue()
     {
         airActive = true;

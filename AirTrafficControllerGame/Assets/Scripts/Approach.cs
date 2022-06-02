@@ -102,9 +102,10 @@ public class Approach : MonoBehaviour
    public bool taxing = false;
     public bool HoldPosition = false;
     //--------SPPEDS-------------
-    public int speed;
+    public float speed;
     public float MoveSpeed = 40;
     int turnSpeed = 8;
+    bool LandingSpeed = false;
     //---------ROTATIONS--------------
      bool rotation360 = false;
      bool rotation360V = false;
@@ -144,7 +145,17 @@ public class Approach : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HoldPosition == true && taxing == true) { speed = 0;   }
+        //decrease speed as the plane is landing
+        if (LandingSpeed == true)
+        { speed = speed - 7.5f * Time.deltaTime;
+        if (speed <= 30)
+            {
+                LandingSpeed = false;
+            }
+        }
+
+
+            if (HoldPosition == true && taxing == true) { speed = 0;   }
         if (HoldPosition == false && taxing == true && speed ==0 && HoldingShortOfDelta == false) { Invoke("TaxiSpeed", 1);    }
 
 
@@ -374,7 +385,7 @@ public class Approach : MonoBehaviour
         //--------------------------------TRIGGERSSS---------------------------------
         if (other.gameObject.CompareTag("GoAround")) {if (ClearToLand == false) { Approach17 = false; goAround = true; } if (gameObject.CompareTag("Visual") || gameObject.CompareTag("West")) { GM.Invoke("secuenciaUpdate", 15);print("secuencia actualizada debio a ida al aire"); } }
         if (other.gameObject.CompareTag("GravityOn")) { RB.useGravity = true; Debug.Log("se activo la gravedad"); }
-        if (other.gameObject.CompareTag("MoveSpeed-")) {  while (MoveSpeed > 30) { MoveSpeed = MoveSpeed - 5 * Time.deltaTime; } } //MoveSpeed = 30;
+        if (other.gameObject.CompareTag("MoveSpeed-")) { LandingSpeed = true; } 
         if (other.gameObject.CompareTag("Turn360")) { if (OutOfRunway17ByF == true && transform.position.x > OutOfRunWaay17ByF[1].transform.position.x) { rotation360 = true; speed = 5; } if (taxiTogateA5 == true) { print("deberia girar a la derecha hacia a5"); rotation360 = true; } }    
         if (other.gameObject.CompareTag("Turn90AP")) { Debug.Log("cocho con turn 90"); rotation90 = true; if (taxiTogateA5 == true) { rotation90 = true; } }
         if (other.gameObject.CompareTag("Turn90APV")) { Debug.Log("cocho con turn 90 v"); rotation90V = true; }
@@ -411,7 +422,7 @@ public class Approach : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, ApproachRunWay17[ApproachRunWay17Index].transform.position, MoveSpeed * Time.deltaTime);
         if (transform.position == ApproachRunWay17[ApproachRunWay17Index].transform.position) { ApproachRunWay17Index += 1; }
-        if (transform.position == ApproachRunWay17[1].transform.position) { Approach17 = false; OutOfRunway17ByF= true; speed = +30; }
+        if (transform.position == ApproachRunWay17[1].transform.position) { Approach17 = false; OutOfRunway17ByF= true;  }
     }
     //-------------------------------------------------------------------------------------------------------------------------
 

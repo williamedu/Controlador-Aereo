@@ -231,6 +231,7 @@ public class pauseMenu : MonoBehaviour
         desactivateSingsAmarillas();
         removeAbrebiation();
         
+        
     }
 
     public void removeAbrebiation()

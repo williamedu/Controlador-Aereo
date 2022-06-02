@@ -15,6 +15,8 @@ public class levelClearSystem : MonoBehaviour
     public GameObject ParticleStart1;
     public GameObject ParticleStart2;
     public GameObject ParticleStart3;
+    public GameObject confetti1;
+    public GameObject confetti2;
 
     public GameObject pauseMenu;
 
@@ -34,6 +36,8 @@ public class levelClearSystem : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         GameManager = GameObject.FindGameObjectWithTag("GM").gameObject;
         numerOfTakeOff = GameObject.FindGameObjectWithTag("TOC").gameObject;
+
+       
     }
 
     
@@ -65,6 +69,7 @@ public void levelComplete()
     {
         if (QuestCounter == 1 && levelClear == true && seActivoLevelComplete == false)
         {
+            GameManager.GetComponent<GameManager>().desactivarTamarillasTAzulesPamarillasPAzules();
             audioManager.GetComponent<AudioManager>().desactivarSonido();
             pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
             pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
@@ -84,6 +89,7 @@ public void levelComplete()
 
         if (QuestCounter == 2 && levelClear == true && seActivoLevelComplete == false)
         {
+            GameManager.GetComponent<GameManager>().desactivarTamarillasTAzulesPamarillasPAzules();
             audioManager.GetComponent<AudioManager>().desactivarSonido();
             pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
             pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
@@ -105,6 +111,7 @@ public void levelComplete()
 
         if (QuestCounter == 3 && levelClear == true && seActivoLevelComplete == false)
         {
+            GameManager.GetComponent<GameManager>().desactivarTamarillasTAzulesPamarillasPAzules();
             audioManager.GetComponent<AudioManager>().desactivarSonido();
             pauseMenu.GetComponent<pauseMenu>().activarBackFrame();
             pauseMenu.GetComponent<pauseMenu>().removeButtonsOffScreem();
@@ -116,10 +123,11 @@ public void levelComplete()
                     particle2();
                     stars[1].DOScale(Vector3.one, 0.4f).SetEase(Ease.InBounce).OnComplete(() => {
                         particle3();
+                        
                         stars[2].DOScale(Vector3.one, 0.4f).SetEase(Ease.OutElastic).OnComplete(() => {
                             pauseMenu.GetComponent<pauseMenu>().winLevel();
 
-
+                            
                         });
                 });
             });
@@ -146,6 +154,8 @@ public void levelComplete()
     {
         ParticleStart3.SetActive(true);
         audioManager.PlayVFX("Start3");
+        confetti1.SetActive(true);
+        confetti2.SetActive(true);
     }
 
     public void paraPruebaPasarNivelObjetivo()
