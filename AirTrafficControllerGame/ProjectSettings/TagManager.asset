@@ -85,6 +85,22 @@ TagManager:
   - dropDownB3
   - AudioManager
   - CC
+  - GravityOff
+  - KineticOn
+  - Decision
+  - TaxiCarIssue
+  - TaxiCar
+  - BagCar
+  - Turn270V
+  - Turn180VV
+  - GroundButton
+  - ApproachButton
+  - Corredor
+  - Elevado
+  - MenuManager
+  - Post
+  - Day
+  - Night
   layers:
   - Default
   - TransparentFX

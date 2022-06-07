@@ -8,10 +8,14 @@ public class handlerAnimations : MonoBehaviour
 {
     public bool On;
     public bool off;
+    public bool soundOn;
+    public bool soundOff;
     public RectTransform handle;
     public float _cycleLenght;
     public GameObject plane;
     private Transform parent;
+    public AudioManager audioManager;
+    public GameManager gameManager;
 
     public void Awake()
     {
@@ -20,7 +24,9 @@ public class handlerAnimations : MonoBehaviour
     }
     public void Start()
     {
-        
+
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
     }
     public void Update()
@@ -28,11 +34,29 @@ public class handlerAnimations : MonoBehaviour
 
     }
 
+    public void SoundOnAndOff()
+    {
+        if (soundOff == false)
+        {
+            gameManager.GetComponent<GameManager>().HoldShortOn();
+            soundOff = true;
+        }
+        else
+        {
+            gameManager.GetComponent<GameManager>().HoldShortOff();
+            soundOff = false;
+
+        }
+
+
+    }
+
+
     public void ShortA()
     {
         if (off == false && On == false)
         {
-
+            SoundOnAndOff();
             handle.DOAnchorPos(new Vector2(-25, 11.468f), _cycleLenght);
             On = true;
             plane.GetComponent<Aeronave>().HoldShortOfAlfa = true;
@@ -41,6 +65,8 @@ public class handlerAnimations : MonoBehaviour
 
         if (On == true && off == false)
         {
+            SoundOnAndOff();
+
             handle.DOAnchorPos(new Vector2(-35.3f, 11.468f), _cycleLenght);
             On = false;
             plane.GetComponent<Aeronave>().HoldShortOfAlfa = false;
@@ -54,6 +80,7 @@ public class handlerAnimations : MonoBehaviour
     {
         if (off == false && On == false)
         {
+            SoundOnAndOff();
 
             handle.DOAnchorPos(new Vector2(-25, 11.468f), _cycleLenght);
             On = true;
@@ -63,6 +90,8 @@ public class handlerAnimations : MonoBehaviour
 
         if (On == true && off == false)
         {
+            SoundOnAndOff();
+
             handle.DOAnchorPos(new Vector2(-35.3f, 11.468f), _cycleLenght);
             On = false;
             plane.GetComponent<Aeronave>().HoldShortOfAlfa = false;
@@ -79,6 +108,7 @@ public class handlerAnimations : MonoBehaviour
     {
         if (off == false && On == false)
         {
+            SoundOnAndOff();
 
             handle.DOAnchorPos(new Vector2(-25, 11.468f), _cycleLenght);
             On = true;
@@ -88,6 +118,8 @@ public class handlerAnimations : MonoBehaviour
 
         if (On == true && off == false)
         {
+            SoundOnAndOff();
+
             handle.DOAnchorPos(new Vector2(-35.3f, 11.468f), _cycleLenght);
             On = false;
             plane.GetComponent<Aeronave>().HoldShortOfCharlie = false;
@@ -101,6 +133,7 @@ public class handlerAnimations : MonoBehaviour
     {
         if (off == false && On == false)
         {
+            SoundOnAndOff();
 
             handle.DOAnchorPos(new Vector2(-25, 11.468f), _cycleLenght);
             On = true;
@@ -110,6 +143,8 @@ public class handlerAnimations : MonoBehaviour
 
         if (On == true && off == false)
         {
+            SoundOnAndOff();
+
             handle.DOAnchorPos(new Vector2(-35.3f, 11.468f), _cycleLenght);
             On = false;
             plane.GetComponent<Aeronave>().HoldShortOfDelta = false;
@@ -123,6 +158,7 @@ public class handlerAnimations : MonoBehaviour
     {
         if (off == false && On == false)
         {
+            SoundOnAndOff();
 
             handle.DOAnchorPos(new Vector2(-25, 11.468f), _cycleLenght);
             On = true;
@@ -132,6 +168,8 @@ public class handlerAnimations : MonoBehaviour
 
         if (On == true && off == false)
         {
+            SoundOnAndOff();
+
             handle.DOAnchorPos(new Vector2(-35.3f, 11.468f), _cycleLenght);
             On = false;
             plane.GetComponent<Aeronave>().HoldShortOfJuliet = false;

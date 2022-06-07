@@ -468,4 +468,47 @@ public class GameManager : MonoBehaviour
         audioManager.PlayVFX("sighn");
 
     }
+
+    public void PauseSound()
+    {
+        audioManager.PlayVFX("pause");
+
+    }
+
+    public void TirillaClickSound()
+    {
+        audioManager.PlayVFX("tirillaClickSound");
+
+    }
+
+    public void StopButton()
+    {
+        audioManager.PlayVFX("StopButton");
+
+    }
+
+    public void ContinueButton()
+    {
+        audioManager.PlayVFX("ContinueButton");
+
+    }
+
+    public void HoldShortOn()
+    {
+        audioManager.PlayVFX("HoldShortOn");
+
+    }
+
+    public void HoldShortOff()
+    {
+        audioManager.PlayVFX("HoldShortOff");
+
+    }
+
+    public void takeOffSound()
+    {
+        audioManager.PlayVFX("takeOff");
+
+    }
+
 }

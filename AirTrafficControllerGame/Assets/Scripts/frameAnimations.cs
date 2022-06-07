@@ -34,13 +34,19 @@ public class frameAnimations : MonoBehaviour
 
     public void taxyOptionAnimation()
     {
-        frame.DOAnchorPos(new Vector2(-216.6773f, -11.4f), _cycleLenght);
+        frame.DOAnchorPos(new Vector2(-244.3f, -11.4f), _cycleLenght);
+
+    }
+
+    public void takeOffFrameAnim()
+    {
+        frame.DOAnchorPos(new Vector2(-176.9f, -11.4f), _cycleLenght);
 
     }
 
     public void holdShortAnim()
     {
-        frame.DOAnchorPos(new Vector2(-239, 29.6f), _cycleLenght);
+        frame.DOAnchorPos(new Vector2(-347, 29.6f), _cycleLenght);
 
     }
 
