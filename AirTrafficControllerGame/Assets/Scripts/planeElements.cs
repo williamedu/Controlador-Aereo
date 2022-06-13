@@ -70,55 +70,55 @@ public class planeElements : MonoBehaviour
     {
       
 
-        if (other.gameObject.CompareTag("A2"))
+        if (other.gameObject.name == "A2S")
         {
             Stand.text = A2;
         }
 
-        if (other.gameObject.CompareTag("A3"))
+        if (other.gameObject.name == "A3S")
         {
             Stand.text = A3;
         }
-        if (other.gameObject.CompareTag("A4"))
+        if (other.gameObject.name == "A4S")
         {
             Stand.text = A4;
         }
-        if (other.gameObject.CompareTag("A5"))
+        if (other.gameObject.name == "A5S")
         {
             Stand.text = A5;
         }
-        if (other.gameObject.CompareTag("A6"))
+        if (other.gameObject.name == "A6S")
         {
             Stand.text = A6;
         }
 
-        if (other.gameObject.CompareTag("B1"))
+        if (other.gameObject.name == "B1S")
         {
             Stand.text = B1;
         }
-        if (other.gameObject.CompareTag("B2"))
+        if (other.gameObject.name == "B2S")
         {
             Stand.text = B2;
         }
-        if (other.gameObject.CompareTag("B3"))
+        if (other.gameObject.name == "B3S")
         {
             Stand.text = B3;
         }
-        if (other.gameObject.CompareTag("B4"))
+        if (other.gameObject.name == "B4S")
         {
             Stand.text = B4;
         }
 
-        if (other.gameObject.CompareTag("C1"))
+        if (other.gameObject.name == "C1S")
         {
             Stand.text = C1;
         }
 
-        if (other.gameObject.CompareTag("C2"))
+        if (other.gameObject.name == "C2S")
         {
             Stand.text = C2;
         }
-        if (other.gameObject.CompareTag("C3"))
+        if (other.gameObject.name == "C3S")
         {
             Stand.text = C3;
         }

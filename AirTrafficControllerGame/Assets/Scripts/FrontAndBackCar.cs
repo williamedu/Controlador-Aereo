@@ -26,7 +26,7 @@ public class FrontAndBackCar : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (gameObject.CompareTag("Front")) { if (other.gameObject.CompareTag("Back")) { car.speed = 0; print("se dio la condicion para parar el carro"); } }
+        if (gameObject.CompareTag("Front")) { if (other.gameObject.CompareTag("Back")) { car.speed = 0;  } }
     }
 
 

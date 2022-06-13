@@ -126,11 +126,10 @@ public class GameManager : MonoBehaviour
             {
 
                 //A6.GetComponentInParent<onclick>().InvokeAeronave(2);
-                 A5.GetComponentInParent<onclick>().InvokeAeronave(10);
+                 A2.GetComponentInParent<onclick>().InvokeAeronave(1);
+                 B2.GetComponentInParent<onclick>().InvokeAeronave(2);
                 //  A4.GetComponentInParent<onclick>().InvokeAeronave(18);
-                A3.GetComponentInParent<onclick>().InvokeAeronave(25);
-                 A2.GetComponentInParent<onclick>().InvokeAeronave(33);
-                B1.GetComponentInParent<onclick>().InvokeAeronave(1);
+               
                // B3.GetComponentInParent<onclick>().InvokeAeronave(2);
 
                 //C3.GetComponentInParent<onclick>().InvokeAeronave(16);

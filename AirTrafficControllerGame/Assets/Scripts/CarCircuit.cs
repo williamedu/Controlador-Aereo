@@ -55,7 +55,7 @@ public class CarCircuit : MonoBehaviour
         if (gameObject.CompareTag("BagCar")) { Decision = 1; }
 
 
-        if (speed == 0) { print("la velocidad llego a ser de 0"); }
+       
 
        if (Circcuit1 == true) { circuit1(); }
        if (Circcuit2 == true) { circuit2(); }
@@ -74,7 +74,7 @@ public class CarCircuit : MonoBehaviour
 
             if (transform.rotation.eulerAngles.y >= 90)
             {
-                print("deberiua empezar a girar");
+                
 
                 Turn90 = false;
             }
@@ -231,7 +231,7 @@ public class CarCircuit : MonoBehaviour
     void bakeDecision()
     {
         Decision = Random.Range(1, 8);
-        print("se bakeo la deccision");
+        
     }
 
 
@@ -239,7 +239,7 @@ public class CarCircuit : MonoBehaviour
     {
         Circcuit1 = true; 
         Circcuit2 = false;
-        print("por abajo");
+      
     }
 
     void decision2()
@@ -252,12 +252,12 @@ public class CarCircuit : MonoBehaviour
     public void stop()
     {
         speed = 0;
-        print("stop");
+        
     }
 
    public void continuee()
     {
         speed = 4;
-        print("continue");
+        
     }
 }

@@ -8,7 +8,7 @@ public class PushBackCheck : MonoBehaviour
     public bool gameOver = false;
 
     public GameManager GM;
-
+    public bool checke = false;
     [Header("tirillas A ")]
     public GameObject A2;
     public GameObject A3;
@@ -22,8 +22,12 @@ public class PushBackCheck : MonoBehaviour
     public GameObject B3;
     public GameObject B4;
 
-    
 
+    public int AirPlanesFacingNorth;
+    public int AirPlanesFacingSouth;
+
+    public int AirPlanesGoingNoth;
+    public int AirPlanesGoingSouth;
 
 
 
@@ -42,44 +46,50 @@ public class PushBackCheck : MonoBehaviour
         B2 = GameObject.FindGameObjectWithTag("B2");
         B3 = GameObject.FindGameObjectWithTag("B3");
         B4 = GameObject.FindGameObjectWithTag("B4");
-
+       
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (checke == true) 
+        {
+
+            if (A3.GetComponent<Aeronave>().isFacingN == true && A2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (A3.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (A3.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (A3.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            //----------------------------------GAME OVER A2------------------------------------------------------------------------------
+            if (A2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (A2.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (A2.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (A2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            //----------------------------------GAME OVER B1------------------------------------------------------------------------------
+            if (B1.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B1.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B1.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            if (B1.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            //----------------------------------GAME OVER B2------------------------------------------------------------------------------
+            if (B2.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B2.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+            //----------------------------------GAME OVER B3------------------------------------------------------------------------------
+            if (B3.GetComponent<Aeronave>().isFacingS == true && B2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B3.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B3.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+            if (B3.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+
+        }
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        //----------------------------------GAME OVER A3------------------------------------------------------------------------------
-        if (A3.GetComponent<Aeronave>().isFacingN == true && A2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (A3.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (A3.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (A3.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        //----------------------------------GAME OVER A2------------------------------------------------------------------------------
-        if (A2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (A2.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (A2.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (A2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        //----------------------------------GAME OVER B1------------------------------------------------------------------------------
-        if (B1.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B1.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B1.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        if (B1.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        //----------------------------------GAME OVER B2------------------------------------------------------------------------------
-        if (B2.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B2.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
-        //----------------------------------GAME OVER B3------------------------------------------------------------------------------
-        if (B3.GetComponent<Aeronave>().isFacingS == true && B2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B3.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B3.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
-        if (B3.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+       
+        
+        
 
 
 
@@ -92,6 +102,43 @@ public class PushBackCheck : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
+       if (other.gameObject.CompareTag("Tierra"))
+        {
+            checke = true;
+          
+        }
         
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        checke = false;
+
+    }
 }
+
+
+// if (A3.GetComponent<Aeronave>().isFacingN == true && A2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (A3.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (A3.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (A3.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//----------------------------------GAME OVER A2------------------------------------------------------------------------------
+//if (A2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+////if (A2.GetComponent<Aeronave>().isFacingN == true && B1.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (A2.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (A2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//----------------------------------GAME OVER B1------------------------------------------------------------------------------
+//if (B1.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B1.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B1.GetComponent<Aeronave>().isFacingN == true && B2.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//if (B1.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//----------------------------------GAME OVER B2------------------------------------------------------------------------------
+//if (B2.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B2.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B2.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B2.GetComponent<Aeronave>().isFacingN == true && B3.GetComponent<Aeronave>().isFacingS == true) { GM.gameOver = true; }
+//----------------------------------GAME OVER B3------------------------------------------------------------------------------
+//if (B3.GetComponent<Aeronave>().isFacingS == true && B2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+////if (B3.GetComponent<Aeronave>().isFacingS == true && B1.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B3.GetComponent<Aeronave>().isFacingS == true && A2.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
+//if (B3.GetComponent<Aeronave>().isFacingS == true && A3.GetComponent<Aeronave>().isFacingN == true) { GM.gameOver = true; }
