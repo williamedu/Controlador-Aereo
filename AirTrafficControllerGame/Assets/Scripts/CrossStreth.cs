@@ -23,10 +23,12 @@ public class CrossStreth : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         menuManager.canCross = false;
+        print("hya carros pasando");
     }
 
     private void OnTriggerExit(Collider other)
     {
         menuManager.canCross = true;
+        print("se puede pasar");
     }
 }

@@ -1,0 +1,579 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TagManagerupdate
+  m_TargetType:
+    m_NativeTypeID: 78
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: tags.Array.size
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[0]
+    value: Stop
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[1]
+    value: green
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[2]
+    value: Ground
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[3]
+    value: P1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[4]
+    value: A3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[5]
+    value: Turn180
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[6]
+    value: Turn90
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[7]
+    value: Turn270
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[8]
+    value: Turn360
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[9]
+    value: Drb
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[10]
+    value: InmediateTakeOff
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[11]
+    value: HoldShortJ
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[12]
+    value: HoldShortA
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[13]
+    value: HoldShortC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[14]
+    value: Turn180V
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[15]
+    value: Speed+
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[16]
+    value: HoldShortD
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[17]
+    value: Turn90V
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[18]
+    value: A2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[19]
+    value: GravityOn
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[20]
+    value: MoveSpeed-
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[21]
+    value: Turn360V
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[22]
+    value: Turn90AP
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[23]
+    value: Turn90APV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[24]
+    value: Gates
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[25]
+    value: Turn251
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[26]
+    value: Turn34
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[27]
+    value: Turn259
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[28]
+    value: Turn0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[29]
+    value: HoldShortR
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[30]
+    value: West
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[31]
+    value: GM
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[32]
+    value: Desicion
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[33]
+    value: Visual
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[34]
+    value: Holding2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[35]
+    value: Holding3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[36]
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[37]
+    value: TakeOffC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[38]
+    value: TakeOffB
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[39]
+    value: TakeOffA
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[40]
+    value: HoldShortB
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[41]
+    value: test
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[42]
+    value: Front
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[43]
+    value: Back
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[44]
+    value: Update
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[45]
+    value: 180VV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[46]
+    value: A5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[47]
+    value: A6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[48]
+    value: B1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[49]
+    value: B2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[50]
+    value: B3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[51]
+    value: B4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[52]
+    value: A4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[53]
+    value: A6Push
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[54]
+    value: C1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[55]
+    value: C2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[56]
+    value: C3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[57]
+    value: GA
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[58]
+    value: Final
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[59]
+    value: ContinueExit
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[60]
+    value: GoAround
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[61]
+    value: PushBackCarsDestroyer
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[62]
+    value: Onsight
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[63]
+    value: Canvas
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[64]
+    value: RFP
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[65]
+    value: TaxingLight
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[66]
+    value: PBC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[67]
+    value: HSC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[68]
+    value: LCS
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[69]
+    value: Tierra
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[70]
+    value: DC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[71]
+    value: TOC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[72]
+    value: BC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[73]
+    value: TOD
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[74]
+    value: dropDownA3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[75]
+    value: dropDownA2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[76]
+    value: dropDownB1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[77]
+    value: dropDownB2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[78]
+    value: dropDownB3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[79]
+    value: AudioManager
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[80]
+    value: CC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[81]
+    value: GravityOff
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[82]
+    value: KineticOn
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[83]
+    value: Decision
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[84]
+    value: TaxiCarIssue
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[85]
+    value: TaxiCar
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[86]
+    value: BagCar
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[87]
+    value: Turn270V
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[88]
+    value: Turn180VV
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[89]
+    value: GroundButton
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[90]
+    value: ApproachButton
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[91]
+    value: Corredor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[92]
+    value: Elevado
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[93]
+    value: MenuManager
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[94]
+    value: Post
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[95]
+    value: Day
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[96]
+    value: Night
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[97]
+    value: NPC1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[98]
+    value: NPC2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tags.Array.data[99]
+    value: NPC3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.size
+    value: 32
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[0]
+    value: Default
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[1]
+    value: TransparentFX
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[2]
+    value: Ignore Raycast
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[3]
+    value: PBC
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[4]
+    value: Water
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[5]
+    value: UI
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[6]
+    value: FrontAndBack
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[7]
+    value: GLOW
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[8]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[9]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[10]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[11]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[12]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[13]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[14]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[15]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[16]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[17]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[18]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[19]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[20]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[21]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[22]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[23]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[24]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[25]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[26]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[27]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[28]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[29]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[30]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: layers.Array.data[31]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[0].name
+    value: Default
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[0].uniqueID
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[0].locked
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[1].name
+    value: foreGround
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[1].uniqueID
+    value: 671668491
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SortingLayers.Array.data[1].locked
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

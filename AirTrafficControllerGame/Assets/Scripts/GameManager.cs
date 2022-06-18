@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public bool airActive;
 
-    bool Call = false;
+    public bool Call = true;
 
     [Header("todas las AERONAVES ")]
     public GameObject port1;
@@ -88,10 +88,13 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        Call = true;
+       
+        pauseWinLvelFrame.gameObject.GetComponent<pauseMenu>().GameIsPaused = false;
     }
     void Start()
     {
+        Call = true;
+
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         airActive = false;
         _cycleLenght = 0.3f;
@@ -126,13 +129,14 @@ public class GameManager : MonoBehaviour
             {
 
                 //A6.GetComponentInParent<onclick>().InvokeAeronave(2);
-                 A2.GetComponentInParent<onclick>().InvokeAeronave(1);
-                 B2.GetComponentInParent<onclick>().InvokeAeronave(2);
+                 
                 //  A4.GetComponentInParent<onclick>().InvokeAeronave(18);
                
-               // B3.GetComponentInParent<onclick>().InvokeAeronave(2);
+                B3.GetComponentInParent<onclick>().InvokeAeronave(2);
 
-                //C3.GetComponentInParent<onclick>().InvokeAeronave(16);
+                C2.GetComponentInParent<onclick>().InvokeAeronave(1);
+                //C1.GetComponentInParent<onclick>().InvokeAeronave(2);
+                
                // A2.GetComponentInParent<onclick>().InvokeAeronave(17);
                // AV3.GetComponentInParent<onclick>().InvokeAeronave(30);
                // AV1.GetComponentInParent<onclick>().InvokeAeronave(39);
@@ -193,7 +197,7 @@ public class GameManager : MonoBehaviour
     public void desactivarTirillasGround()
     {
         // DESACTIVA TIRILLAS DE A
-        if (A2.GetComponentInParent<Aeronave>().isActive == true || pauseMenu.GameIsPaused == true )
+        if (A2.GetComponentInParent<Aeronave>().isActive == true  )
         {
             A2.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
         }

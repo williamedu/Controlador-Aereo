@@ -13,7 +13,7 @@ public class pauseMenu : MonoBehaviour
     public GameObject RWYIndicators;
     public AudioManager audioManager;
     public RectTransform SettingsMenuFrame;
-    public static bool GameIsPaused = false;
+    public  bool GameIsPaused = false;
     public bool ImOnGround = true;
     
     public Animator _anim;
@@ -48,8 +48,13 @@ public class pauseMenu : MonoBehaviour
     public RectTransform T6B;
 
     public List<GameObject> WayPointsIndicators = new List<GameObject>();
+
+    
     private void Start()
     {
+        
+
+
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         _anim = gameObject.GetComponent<Animator>();
     }
@@ -62,6 +67,7 @@ public class pauseMenu : MonoBehaviour
                     Resume();
                 audioManager.GetComponent<AudioManager>().ActivarSonido();
                 onclick.canClick = true;
+                
                 MoveCam.canMoveCam = true;
                 WayPointsIndicatorsOn();
                 RWYIndicators.SetActive(true);
@@ -165,6 +171,7 @@ public class pauseMenu : MonoBehaviour
         GameIsPaused = false;
         pauseCanvas.SetActive(false);
         pauseMenuFrame.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce);
+        awakeGame();
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -291,6 +298,20 @@ public class pauseMenu : MonoBehaviour
         }
     }
 
+    public void awakeGame()
+    {
+        Resume();
+        audioManager.GetComponent<AudioManager>().ActivarSonido();
+        onclick.canClick = true;
+        MoveCam.canMoveCam = true;
+        WayPointsIndicatorsOn();
+        RWYIndicators.SetActive(true);
+        ground.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
+        approach.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
+        conditions.DOAnchorPosY(-10.59998f, 0.1f).SetEase(Ease.InBounce);
+        quest.DOAnchorPosX(-766f, 0.1f).SetEase(Ease.InBounce);
+
+    }
     public void continueButton()
     {
         if (GameIsPaused)

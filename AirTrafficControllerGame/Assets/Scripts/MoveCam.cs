@@ -9,6 +9,7 @@ public class MoveCam : MonoBehaviour
     public bool x;
     public bool y;
     public static bool canMoveCam = true;
+    //public bool canmoveCanCheck = true;
     public float height = 1f;
     public float width = 1f;
     public bool test = false;
@@ -19,17 +20,26 @@ public class MoveCam : MonoBehaviour
 
     void Start()
     {
+        canMoveCam = true;
         print(transform.rotation.eulerAngles.y);
     }
 
     private void Update()
     {
+       /* if (canMoveCam == true)
+        {
+            canmoveCanCheck = true;
+        }
+        else
+        {
+            canmoveCanCheck = false;
+        }
 
         if (gameObject.transform.rotation.eulerAngles.y >= 210)
         {
 
         }
-
+       */
 
         if (Input.GetMouseButtonUp(0))
         {

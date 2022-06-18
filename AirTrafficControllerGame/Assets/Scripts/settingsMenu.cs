@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
+
 
 public class settingsMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool settinsIsActive = false;
+    public RectTransform pauseMenuMainMenuScreenOnly;
 
     public AudioMixer auidoMixer;
 
@@ -49,6 +52,21 @@ public class settingsMenu : MonoBehaviour
 
     public void Update()
     {
+        /*
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuMainMenuScreenOnly == null)
+        {
+            //print("estamos en juego");
+                 
+        }
+        else
+        {
+            pauseMenuMainMenuScreenOnly.DOAnchorPos(Vector3.one, 0.5f).SetEase(Ease.InBounce);
+            print("estamos en mainScreen");
+
+        }
+        */
+
+
         if (Input.GetKeyDown(KeyCode.Escape) && settinsIsActive)
 
         {
@@ -57,6 +75,17 @@ public class settingsMenu : MonoBehaviour
             this.GetComponent<Animator>().SetBool("pauseMenuAnim", false);
         }
         
+    }
+    public void activarFrameMainMenuSettings() // para activar frame solo en main menu con botton de settings
+    {
+        pauseMenuMainMenuScreenOnly.DOScale(Vector3.one, 0.1f).SetEase(Ease.InBounce);
+       
+    }
+
+    public void desactivarFrameMainMenuSettings() // para activar frame solo en main menu con botton de settings
+    {
+        pauseMenuMainMenuScreenOnly.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBounce);
+
     }
 
     public void SetResolution (int resolutionIndex)
@@ -71,9 +100,25 @@ public class settingsMenu : MonoBehaviour
              
     }
 
+   
     public void SetMusicVolume(float value)
     {
         auidoMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+
+    public void MuteSFX(float value)
+    {
+        auidoMixer.SetFloat(MIXER_SFX, Mathf.Log10(value));
+    }
+
+    public void MuteMUSIC(float value)
+    {
+        auidoMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value));
+    }
+
+    public void MuteVOICE(float value)
+    {
+        auidoMixer.SetFloat(MIXER_VOICES, Mathf.Log10(value));
     }
 
     public void SetSFXVolume(float value)
