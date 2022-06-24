@@ -19,7 +19,7 @@ public class CarCircuit : MonoBehaviour
 
 
 
-
+    bool look = false;
     public bool Circcuit1 = false;
     public bool Circcuit2 = false;
    public  bool Turn90 = false;
@@ -52,6 +52,19 @@ public class CarCircuit : MonoBehaviour
     void Update()
 
     {
+        if (look == true && Circcuit1 == true)
+        {
+            transform.LookAt(Circuit1[Circuit1Index].transform.position);
+            look = false;
+        }
+
+        if (look == true && Circcuit2 == true)
+        {
+            transform.LookAt(Circuit2[Circuit2Index].transform.position);
+            look = false;
+        }
+
+
         if (gameObject.CompareTag("BagCar")) { Decision = 1; }
 
 
@@ -190,6 +203,7 @@ public class CarCircuit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag ("Correct")) { look = true; print("deberia girar"); }
         if (other.gameObject.CompareTag("Turn90"))  {   Turn90  = true; }
         if (other.gameObject.CompareTag("Turn90V"))  {  Turn90V  = true; }
         if (other.gameObject.CompareTag("Turn180V"))  { if (Circcuit2 == true) { Turn180 = true; } }

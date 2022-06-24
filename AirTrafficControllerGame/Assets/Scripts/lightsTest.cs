@@ -46,7 +46,7 @@ public class lightsTest : MonoBehaviour
         image = GetComponent<Image>();// para la imagen del stop
         // estas 2 lineas de codigo referencian el stop button automatico
         getChild = transform.parent.parent;
-        StopButton = getChild.GetChild(7).gameObject;
+        StopButton = getChild.GetChild(13).gameObject;
 
     }
 

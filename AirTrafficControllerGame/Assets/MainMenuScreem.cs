@@ -9,6 +9,7 @@ public class MainMenuScreem : MonoBehaviour
 
     public RectTransform campaingFrame;
     public RectTransform mainMenuScreen;
+    public RectTransform badgesMenu;
    
 
     public void showCampaing()
@@ -27,5 +28,22 @@ public class MainMenuScreem : MonoBehaviour
         
         mainMenuScreen.DOScale(Vector3.one, 0.2f).SetEase(Ease.InBounce);
 
+    }
+
+    public void showBadges()
+    {
+
+        badgesMenu.DOScale(Vector3.one, 0f).SetEase(Ease.InBounce).OnComplete(() => {
+            badgesMenu.gameObject.SetActive(true);
+        });
+    }
+
+    public void hideBadges()
+    {
+        badgesMenu.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce).OnComplete(() => {
+            badgesMenu.gameObject.SetActive(false);
+
+
+        });
     }
 }
