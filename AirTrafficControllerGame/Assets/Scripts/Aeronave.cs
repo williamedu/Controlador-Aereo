@@ -157,7 +157,7 @@ public class Aeronave : MonoBehaviour
     bool talkReadyToTaxi = true;
     bool talkrogerthat = true;
     bool talkReadyForDeparture = true;
-
+    bool DeparingSpeed = false;
     public  bool isActive; // para referenciar que la tirilla esta active o no
     // Start is called before the first frame update
     void Start()
@@ -191,6 +191,14 @@ public class Aeronave : MonoBehaviour
     void Update()
 
     {
+        if (DeparingSpeed == true)
+        {
+            MoveSpeed = MoveSpeed + 8 * Time.deltaTime;
+            if (MoveSpeed >= 140)
+            {
+                DeparingSpeed = false;
+            }
+        }
         
         if (ReadyToTaxi == true)
         {
@@ -244,11 +252,19 @@ public class Aeronave : MonoBehaviour
         //INCLINAR LA AERONAVE AL DESPEGAR------------------------
         if (Inclinacion == true)
         {
+            bool stoplift1 = true;
+            int num = 1;
             Wheel3.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
             Wheel2.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
             Wheel1.transform.Rotate(Vector3.right * wheelliftspeed * Time.deltaTime);
-            Invoke("stoplifting", 8);
-
+            
+            if (stoplift1 == true && num == 1)
+            {
+                Invoke("stoplifting", 8);
+                print("se activo para parar la rotacioon de las gomas ");
+                num = 2;
+                stoplift1 = false;
+            }
             transform.Rotate(Vector3.left * AnguloDeAtaque * Time.deltaTime); 
             if (gameObject.transform.rotation.eulerAngles.x <= 349) { AnguloDeAtaque = 0; } }
         //----------------------------------------------
@@ -656,8 +672,8 @@ public class Aeronave : MonoBehaviour
         //------------------------------------------------------------------------------------------------------
 
         //----------------------------------DESACTIVAR GRAVEDAD DE LA AERONAVE--------------------------------------------------------------------
-        if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6; print( "speed se activo por " + other); }
-
+        //if (other.gameObject.CompareTag("Speed+")) { MoveSpeed += 6;  }
+        if (other.gameObject.CompareTag("Speed+")) { DeparingSpeed = true; }
         //----------------------------------PROCESO DE DESPEGUE--------------------------------------------------------------------
 
         if (other.gameObject.CompareTag("TakeOffA")) { ATakeOff = true; }
@@ -852,6 +868,7 @@ public class Aeronave : MonoBehaviour
     {
         wheelliftspeed = 0;
         print("se detuvo la rotacion");
+        CancelInvoke();
             
     }
 

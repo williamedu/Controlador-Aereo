@@ -225,6 +225,11 @@ public class pauseMenu : MonoBehaviour
         }
     }
 
+    public void timeScale()
+    {
+        Time.timeScale = 1f;
+
+    }
     public void winLevel()
     {
         //esto se usa en levelClearSystem para determinar que se gano el nivel y activar los parametros aqui debajo

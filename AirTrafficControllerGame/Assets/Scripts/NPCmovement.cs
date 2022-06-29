@@ -43,6 +43,7 @@ public class NPCmovement : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         speed = 1.8f;
         if (gameObject.CompareTag("NPC1") || gameObject.CompareTag("NPC2")) { NPC1();   }
+       // if (gameObject.CompareTag("fight")) { fight();   }
         bakeNumber();
     }
     void Start()
@@ -172,6 +173,13 @@ public class NPCmovement : MonoBehaviour
         
         anim.SetTrigger("Walk");
         
+    }
+
+    void fight()
+    {
+
+        anim.SetTrigger("fight");
+
     }
 
     void NPC2()

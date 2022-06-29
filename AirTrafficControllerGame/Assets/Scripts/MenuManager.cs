@@ -6,9 +6,19 @@ using UnityEngine.Rendering.Universal;
 //using UnityEngine.Rendering.PostProcessing;
 
 
-public class MenuManager : MonoBehaviour
+public  class MenuManager : MonoBehaviour
 {
-  
+    public AudioSource Music1;
+    public AudioSource Music2;
+    public AudioSource Music3;
+   
+    bool music1playing = false;
+    bool music2playing = false;
+    bool music3playing = false;
+    
+    public int playMusic;
+    bool whichToPlay = true;
+
     public VolumeProfile dayTime;
     public VolumeProfile nightTime;
     private DepthOfField depthOfField1;
@@ -92,9 +102,51 @@ public class MenuManager : MonoBehaviour
 
     bool checkDay = true;
 
+    public Badges badges; // refencia de script
+
+    //referecnias a candados
+    [Header("locks")]
+    public GameObject lock1;
+    public GameObject lock2;
+    public GameObject lock3;
+    public GameObject lock4;
+    public GameObject lock5;
+    public GameObject lock6;
+    public GameObject lock7;
+    public GameObject lock8;
+    public GameObject lock9;
+    public GameObject lock10;
+    public GameObject lock11;
+    public GameObject lock12;
+    public GameObject lock13;
+    public GameObject lock14;
+    public GameObject lock15;
+    public GameObject lock16;
+    public GameObject lock17;
+    public GameObject lock18;
+    public GameObject lock19;
+    public GameObject lock20;
+    public GameObject lock21;
+    public GameObject lock22;
+    public GameObject lock23;
+    public GameObject lock24;
+    public GameObject lock25;
+    public GameObject lock26;
+    public GameObject lock27;
+    public GameObject lock28;
+    public GameObject lock29;
+    public GameObject lock30;
+    public GameObject lock31;
+    public GameObject lock32;
+    public GameObject lock33;
+    public GameObject lock34;
+    public GameObject lock35;
 
     private void Awake()
     {
+
+
+
         dayTime.TryGet(out depthOfField1);
         nightTime.TryGet(out depthOfField2);
         characterSelectionn2 = true;
@@ -104,13 +156,19 @@ public class MenuManager : MonoBehaviour
 
         if(depthOfField1 == true) { depthOfField1.active = false; }
         if(depthOfField2 == true) { depthOfField2.active = false; }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        
+        musicSelector();
+        badges = GameObject.Find("Badges").GetComponent<Badges>();
+        badges.LoadBadges(); // para cargar al empezar scena
+
+
+
         NPC7 = GameObject.Find("NPC7");
         NPC8 = GameObject.Find("NPC8");
         NPC9 = GameObject.Find("NPC9");
@@ -133,16 +191,89 @@ public class MenuManager : MonoBehaviour
         Windows = GameObject.Find("window");
         CharacterSelection();
         CharacterSelection2();
-        
-       
-
+           
         QualitySettings.pixelLightCount = 25;
-       
+       if (badges.Obadge1 == true)
+        {
+            lock1.SetActive(false);
+        }
+        if (badges.Obadge5 == true)
+        {
+            lock5.SetActive(false);
+        }
+        if (badges.Obadge10 == true)
+        {
+            lock10.SetActive(false);
+        }
+        if (badges.Obadge15 == true)
+        {
+            lock15.SetActive(false);
+        }
+
     }
 
     private void Update()
     {
+
+        if (whichToPlay == true)
+        {
+            if (playMusic == 1)
+            {
+                Music1.Play();
+                whichToPlay = false;
+                music1playing = true;
+            }
+
+            if (playMusic == 2)
+            {
+                Music2.Play();
+                whichToPlay = false;
+                music2playing = true;
+            }
+
+            if (playMusic == 3)
+            {
+                Music3.Play();
+                whichToPlay = false;
+                music3playing = true;
+            }
+
+
+           
+
+
+        }
+
+        if (music1playing == true)
+        {
+            if (Music1.isPlaying == false)
+            {
+                musicSelector();
+                music1playing = false;
+            }
+        }
+
+        if (music2playing == true)
+        {
+            if (Music2.isPlaying == false)
+            {
+                musicSelector();
+                music2playing = false;
+            }
+        }
+
+        if (music3playing == true)
+        {
+            if (Music3.isPlaying == false)
+            {
+                musicSelector();
+                music3playing = false;
+            }
+        }
+
         
+
+
         if (deactivateDepthOfField == true)
         {
             if (RenderSettings.skybox == Skys[0])
@@ -343,7 +474,11 @@ public class MenuManager : MonoBehaviour
     {
         characterSelection2 = Random.Range(1, 9);
     }
-
+    public void musicSelector()
+    {
+        playMusic = Random.Range(1, 4);
+        whichToPlay = true;
+    }
 
 
     private Material SelectRandomMaterial()
@@ -369,5 +504,6 @@ public class MenuManager : MonoBehaviour
     {
         depthOfField1.active = false;
         depthOfField2.active = false;
+        badges.SaveBadges();
     }
 }

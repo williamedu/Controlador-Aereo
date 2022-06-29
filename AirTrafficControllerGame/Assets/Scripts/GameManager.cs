@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public bool airActive;
 
     public bool Call = true;
+    [Header("badges con los buleanos ")]
+
+    public Badges badges;
 
     [Header("todas las AERONAVES ")]
     public GameObject port1;
@@ -93,6 +96,10 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        //audioManager.gameObject.GetComponent<AudioManager>().PlayMusicBackGround("mainTheme");
+
+
+        badges = GameObject.Find("Badges").GetComponent<Badges>();
         Call = true;
 
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
@@ -105,8 +112,11 @@ public class GameManager : MonoBehaviour
         port5 = GameObject.Find("tirilla5");
         port6 = GameObject.Find("tirilla6");
 
+        badges.LoadBadges();
+
+
         //port1FinalPosition = new Vector3(port1.transform.position.x + 160, port1.transform.position.y, port1.transform.position.z);
-        
+
     }
 
     public void winLevel()
@@ -514,4 +524,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    public void OnApplicationQuit()
+    {
+        badges.SaveBadges();
+    }
 }
